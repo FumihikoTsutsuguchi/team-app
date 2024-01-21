@@ -1,0 +1,60 @@
+// 基本の設定に関するスタイルを記述
+@use "../global" as *;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: $ff-main, sans-serif;
+
+    // font-size: 1.6rem;
+    font-size: clamp(
+        1.4rem,
+        1.343rem + 0.29vw,
+        1.6rem
+    ); // 320px~1440pxの間で1.4rem~1.6remで可変。https://min-max-calculator.9elements.com/ を参考
+    font-weight: 700;
+    font-feature-settings: "pwid";
+    line-height: 24px;
+    color: $black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+    a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-position: under;
+        text-decoration-skip-ink: none;
+    }
+    ul,
+    ol {
+        list-style: none;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+    input,
+    button,
+    textarea,
+    select {
+        font-family: $ff-main;
+        font-size: inherit;
+        color: inherit;
+        appearance: none;
+        background: none;
+        border: none;
+        border-radius: 0;
+    }
+
+    // select::-ms-expand {
+    // 	display: none;
+    // }
+    input [type="submit"],
+    button {
+        cursor: pointer;
+    }
+
+}

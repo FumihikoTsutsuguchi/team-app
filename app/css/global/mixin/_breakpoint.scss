@@ -1,0 +1,44 @@
+// PCファーストの場合
+@mixin mq($breakpoint: sp_s) {
+    @if $breakpoint == sp_s {
+        // SP default
+        @media screen and (width <= 350px) {
+            @content;
+        }
+    } @else if $breakpoint == sp {
+        // SP default
+        @media screen and (width <= 767px) {
+            @content;
+        }
+    } @else if $breakpoint == tl {
+        // TL vertical
+        @media screen and (width <= 960px) {
+            @content;
+        }
+    } @else if $breakpoint == tl_m {
+        // TL medium
+        @media screen and (width <= 1136px) {
+            @content;
+        }
+    } @else if $breakpoint == tl_l {
+        // TL large
+        @media screen and (width <= 1280px) {
+            @content;
+        }
+    } @else if $breakpoint == pc {
+        // PC default
+        @media screen and (width >= 1281px) {
+            @content;
+        }
+    } @else if $breakpoint == pc_l {
+        // PC large
+        @media screen and (width >= 1600px) {
+            @content;
+        }
+    } @else if $breakpoint == ie {
+        // Internet Explorer
+        @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+            @content;
+        }
+    }
+}

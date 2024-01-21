@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  web:
+    build: ./docker/web
+    container_name: web-container
+    environment:
+      TZ: "Asia/Tokyo"
+    ports:
+      - "5050:80"
+    volumes:
+      - ./app:/team-app/app
+    depends_on:
+      - db
+
+  db:
+    build: ./docker/db
+    container_name: db-container
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      TZ: "Asia/Tokyo"
+    ports:
+      - 3000:3306
+    volumes:
+      - "app_data:/var/lib/mysql"
+      - "./docker/db/init:/docker-entrypoint-initdb.d"
+      - "./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf"
+    restart: always
+
+volumes:
+  app_data:
+    driver: local

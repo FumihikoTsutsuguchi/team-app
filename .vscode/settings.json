@@ -1,0 +1,55 @@
+{
+    // デフォルトフォーマッター
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // ドラッグ&ドロップでコード移動しない
+    "editor.dragAndDrop": false,
+    // 保存時にformatter起動
+    "editor.formatOnSave": true,
+    // ブラケットのペアガイドを表示
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    // ミニマップ非表示
+    "editor.minimap.enabled": false,
+    //   タブサイズ
+    "editor.tabSize": 4,
+    // 空白文字を見やすく
+    "editor.renderWhitespace": "all",
+
+    // 自動保存
+    "files.autoSave": "afterDelay",
+    // 無駄なホワイトスペースを削除
+    "files.trimTrailingWhitespace": true,
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    },
+
+    // prettier設定
+    "prettier.printWidth": 120,
+
+    // Live Sass Compiler設定
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".css",
+            "savePath": "/app/dist/css"
+        }
+    ],
+    "liveSassCompile.settings.autoprefix": [">= 5%", "last 2 versions"],
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.watchOnLaunch": true,
+    "intelephense.completion.maxItems": 100,
+    "files.trimFinalNewlines": true,
+
+    // scss設定 空白行
+    "scss.format.newlineBetweenRules": false,
+    // scss設定 機能前後に空白文字
+    "scss.format.spaceAroundSelectorSeparator": true,
+
+    // stylelint設定
+    "stylelint.validate": ["css", "scss"],
+    "scss.validate": false,
+    "css.validate": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.stylelint": true
+    },
+}
