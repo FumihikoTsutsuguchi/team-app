@@ -1,0 +1,24 @@
+@use "../global" as *;
+
+
+.p-avatar {
+    margin-top: 120px;
+}
+
+.p-avatar__wrap {
+    margin-top: 50px;
+    padding: 50px;
+    border: 1px solid $border;
+    border-radius: 10px;
+}
+
+.p-avatar__wrap-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    & + .p-avatar__wrap-list {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid $border;
+    }
+}
