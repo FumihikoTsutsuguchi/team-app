@@ -1,5 +1,15 @@
 @use "../global" as *;
 
 .c-nav-global {
+    ul {
+        display: flex;
+        gap: 40px;
+        li {
+            a {
+                display: inline-block;
+                text-decoration: none;
+            }
+        }
+    }
 
 }
