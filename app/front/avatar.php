@@ -6,7 +6,7 @@
         <div class="p-avatar__wrap">
             <ul class="p-avatar__wrap-list">
                 <li>
-                    <button name="selected_avatar" value="king" class="c-avatar">
+                    <button name="avatar" value="king" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/king.png" alt="">
                         </div>
@@ -14,7 +14,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="tengu" class="c-avatar">
+                    <button name="avatar" value="tengu" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/tengu.png" alt="">
                         </div>
@@ -22,7 +22,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="kappa" class="c-avatar">
+                    <button name="avatar" value="kappa" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/kappa.png" alt="">
                         </div>
@@ -32,7 +32,7 @@
             </ul>
             <ul class="p-avatar__wrap-list">
                 <li>
-                    <button name="selected_avatar" value="gitHubNeko" class="c-avatar">
+                    <button name="avatar" value="gitHubNeko" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/cat.png" alt="">
                         </div>
@@ -40,7 +40,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="capybara" class="c-avatar">
+                    <button name="avatar" value="capybara" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/capybara.png" alt="">
                         </div>
@@ -48,7 +48,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="dockerWhale" class="c-avatar">
+                    <button name="avatar" value="dockerWhale" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/whale.png" alt="">
                         </div>
@@ -56,7 +56,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="phpElephant" class="c-avatar">
+                    <button name="avatar" value="phpElephant" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/elephant.png" alt="">
                         </div>
@@ -64,7 +64,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="alpaca" class="c-avatar">
+                    <button name="avatar" value="alpaca" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/alpaca.png" alt="">
                         </div>
@@ -72,7 +72,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="dog" class="c-avatar">
+                    <button name="avatar" value="dog" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/dog.png" alt="">
                         </div>
@@ -82,7 +82,7 @@
             </ul>
             <ul class="p-avatar__wrap-list">
                 <li>
-                    <button name="selected_avatar" value="officeWorker1" class="c-avatar">
+                    <button name="avatar" value="officeWorker1" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/office-worker_1.png" alt="">
                         </div>
@@ -90,7 +90,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="officeWorker2" class="c-avatar">
+                    <button name="avatar" value="officeWorker2" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/office-worker_2.png" alt="">
                         </div>
@@ -98,7 +98,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="student" class="c-avatar">
+                    <button name="avatar" value="student" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/student.png" alt="">
                         </div>
@@ -106,7 +106,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="child" class="c-avatar">
+                    <button name="avatar" value="child" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/child.png" alt="">
                         </div>
@@ -114,7 +114,7 @@
                     </button>
                 </li>
                 <li>
-                    <button name="selected_avatar" value="windowsXpDolphin" class="c-avatar">
+                    <button name="avatar" value="windowsXpDolphin" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/dolphin.png" alt="">
                         </div>
@@ -124,7 +124,7 @@
             </ul>
             <ul class="p-avatar__wrap-list">
                 <li>
-                    <button name="selected_avatar" value="primitiveMan" class="c-avatar">
+                    <button name="avatar" value="primitiveMan" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/primitive-man.png" alt="">
                         </div>
