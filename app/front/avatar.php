@@ -1,137 +1,137 @@
 <?php require_once("./header.php"); ?>
 
 <div class="c-wrapper">
-    <div class="p-avatar">
+    <form  action="" method="post" class="p-avatar">
         <h2 class="c-heading">アバター 一覧</h2>
         <div class="p-avatar__wrap">
             <ul class="p-avatar__wrap-list">
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="king" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/king.png" alt="">
                         </div>
-                        <p></p>
+                        <p>王様</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="tengu" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/tengu.png" alt="">
                         </div>
-                        <p></p>
+                        <p>天狗</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="kappa" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/kappa.png" alt="">
                         </div>
-                        <p></p>
+                        <p>かっぱ</p>
                     </button>
                 </li>
             </ul>
             <ul class="p-avatar__wrap-list">
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="gitHubNeko" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/cat.png" alt="">
                         </div>
-                        <p></p>
+                        <p>G◯tHubネコ</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="capybara" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/capybara.png" alt="">
                         </div>
-                        <p></p>
+                        <p>カピバラ</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="dockerWhale" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/whale.png" alt="">
                         </div>
-                        <p></p>
+                        <p>D◯ckerくじら</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="phpElephant" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/elephant.png" alt="">
                         </div>
-                        <p></p>
+                        <p>P◯Pゾウ</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="alpaca" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/alpaca.png" alt="">
                         </div>
-                        <p></p>
+                        <p>アルパカ</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="dog" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/dog.png" alt="">
                         </div>
-                        <p></p>
+                        <p>犬</p>
                     </button>
                 </li>
             </ul>
             <ul class="p-avatar__wrap-list">
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="officeWorker1" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/office-worker_1.png" alt="">
                         </div>
-                        <p></p>
+                        <p>サラリーマン1</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="officeWorker2" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/office-worker_2.png" alt="">
                         </div>
-                        <p></p>
+                        <p>サラリーマン2</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="student" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/student.png" alt="">
                         </div>
-                        <p></p>
+                        <p>学生</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="child" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/child.png" alt="">
                         </div>
-                        <p></p>
+                        <p>園児</p>
                     </button>
                 </li>
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="windowsXpDolphin" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/dolphin.png" alt="">
                         </div>
-                        <p></p>
+                        <p>Wind◯wsXPイルカ</p>
                     </button>
                 </li>
             </ul>
             <ul class="p-avatar__wrap-list">
                 <li>
-                    <button class="c-avatar">
+                    <button name="selected_avatar" value="primitiveMan" class="c-avatar">
                         <div class="c-avatar__img">
                             <img src="./img/avatar/primitive-man.png" alt="">
                         </div>
-                        <p></p>
+                        <p>原始人</p>
                     </button>
                 </li>
             </ul>
         </div>
-    </div>
+    </form>
 </div>

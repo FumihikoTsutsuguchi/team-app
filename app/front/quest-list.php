@@ -12,6 +12,12 @@
         <div class="p-quest-list__select">
             <h3>QUEST</h3>
             <details>
+                <?php
+                /* [TODO]
+                こちらの<details>内にある<button>(各QUESTの詳細)のテキスト情報についてはデータベースで管理する
+                1/23時点では、一旦静的テキストを配置
+                */
+                ?>
                 <summary>PHP</summary>
                 <div class="p-quest-list__select-content">
                     <h4>1. Skill Doc を読む</h4>
