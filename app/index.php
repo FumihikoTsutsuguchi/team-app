@@ -17,7 +17,22 @@
             <div class="p-front__study-content">
                 <p>学習時間 (QUEST・学習記録)</p>
                 <div class="p-front__study-content-total">
-
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>今日</th>
+                                <th>今週</th>
+                                <th>統計</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5時間</td>
+                                <td>50時間</td>
+                                <td>120時間</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="p-front__study-content-bar-graph">
 

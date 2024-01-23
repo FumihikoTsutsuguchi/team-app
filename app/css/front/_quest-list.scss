@@ -1,0 +1,51 @@
+@use "../global" as *;
+
+.p-quest-list {
+    margin-top: 120px;
+}
+
+.p-quest-list__select {
+    margin: 80px 0;
+    max-width: 60%;
+    h3 {
+        font-size: 2.8rem;
+        margin-bottom: 30px;
+    }
+    details {
+        position: relative;
+        padding: 15px 30px;
+        border: 1px solid $border;
+        border-radius: 5px;
+        &::after {
+            position: absolute;
+            content: "🔽";
+            width: 7px;
+            height: 7px;
+            top: 15px;
+            right: 34px;
+        }
+        & + details {
+            margin-top: 10px;
+        }
+        .p-quest-list__select-content {
+            margin-top: 30px;
+            & + .p-quest-list__select-content {
+                margin-top: 20px;
+            }
+        }
+        summary {
+            font-size: 1.8rem;
+        }
+        ul {
+            margin-top: 10px;
+            li {
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid $border;
+                button {
+
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+@use "../global" as *;
+
+.c-archive {
+    ul {
+        display: flex;
+        gap: 30px;
+        li {
+            max-width: 130px;
+        }
+    }
+}
+
+.c-archive-button {
+    padding: 23px 20px 30px;
+    border: 1px solid $border;
+    border-radius: 3px;
+}
+
+.c-archive-content {
+    span {
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+    P {
+        margin-bottom: 12px;
+    }
+}
