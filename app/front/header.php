@@ -13,7 +13,7 @@
     <header class="c-header" role="banner">
         <div class="c-header__wrap">
             <h1>
-                <a href="/">
+                <a href="../front">
                     <img src="./img/logo/apprentice-quest.png" alt="アプレンティス quest" width="400" height="60">
                 </a>
             </h1>
