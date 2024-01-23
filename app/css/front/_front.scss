@@ -4,7 +4,8 @@
 .p-front__mv {
     position: relative;
     aspect-ratio: 1440/500;
-    // padding-top: 120px;
+    display: grid;
+    place-items: center;
     &::before {
         position: absolute;
         content: '';
@@ -16,27 +17,56 @@
     }
 }
 .p-front__mv-content {
-
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(-20px);
 }
 .p-front__mv-content-img {
-
+    aspect-ratio: 50/40;
+    max-width: 50px;
 }
 
 .p-front__mv-content-button {
-
+    aspect-ratio: 100/50;
+    max-width: 100px;
 }
 
 // 学習状況セクション
 .p-front__study {
-    margin: 120px;
+    margin-top: 120px;
 }
 
 .p-front__study-content {
-
+    p {
+        margin: 30px 0;
+    }
 }
 
 .p-front__study-content-total {
-
+    table {
+        border-radius: 5px;
+        border: 1px solid $border;
+        border-collapse: separate;
+        overflow: hidden;
+        thead {
+            background-color: #f0f6da;
+            font-size: 1.8rem;
+        }
+        th,
+        td {
+            width: 150px;
+            text-align: center;
+            border: 0.5px solid $border;
+        }
+        th {
+            padding: 10px 10px;
+        }
+        td {
+            padding: 15px 10px;
+        }
+    }
 }
 
 .p-front__study-content-bar-graph {
@@ -49,7 +79,7 @@
     border: 1px solid $border;
     border-radius: 10px;
     padding: 50px 50px;
-
+    width: 60%;
 }
 
 .p-front__avatar-content-avatar {
@@ -60,7 +90,7 @@
 .p-front__avatar-content-img {
     margin-bottom: 10px;
     aspect-ratio: 1/1;
-    max-width: 200px;
+    max-width: 150px;
     img {
         width: 100%;
         height: 100%;
@@ -71,8 +101,27 @@
 
 .p-front__avatar-content {
     padding: 50px 0;
+    .c-button {
+        margin-left: auto;
+    }
 }
 
 .p-front__avatar-content-status {
+    > p {
+        margin-bottom: 20px;
+    }
     margin: 50px 0px;
+    progress {
+        width: 360px;
+        height: 20px;
+        -webkit-appearance: none;
+    }
+    progress::-webkit-progress-bar {
+        background-color: $gray-bg;
+        border-radius: 5px;
+    }
+    progress::-webkit-progress-value {
+        background-color: green;
+        border-radius: 5px;
+    }
 }

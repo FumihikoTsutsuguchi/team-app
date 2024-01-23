@@ -11,5 +11,30 @@
             }
         }
     }
+}
 
+.c-nav-breadcrumb {
+    ol {
+        display: flex;
+        gap: 20px;
+        li {
+            position: relative;
+            &:last-child {
+                color: $gray;
+            }
+            & + li {
+                &::before {
+                    position: absolute;
+                    content: ">";
+                    width: 7px;
+                    height: 7px;
+                    top: calc(50% - 13px);
+                    left: -14px;
+                }
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+    }
 }
