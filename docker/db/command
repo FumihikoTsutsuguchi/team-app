@@ -1,0 +1,2 @@
+mysql -u root -p < ./docker-entrypoint-initdb.d/initialize_db.sql
+mysql -u root -p -D qppque
