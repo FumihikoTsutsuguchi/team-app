@@ -31,7 +31,7 @@
         {
             "format": "compressed",
             "extensionName": ".css",
-            "savePath": "/app/dist/css"
+            "savePath": "/app/front/dist/css"
         }
     ],
     "liveSassCompile.settings.autoprefix": [">= 5%", "last 2 versions"],

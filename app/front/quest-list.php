@@ -3,7 +3,7 @@
 <div class="c-wrapper">
     <div class="c-nav-breadcrumb">
         <ol>
-            <li><a href="">TOP</a></li>
+            <li><a href="../front">TOP</a></li>
             <li>QUEST一覧</li>
         </ol>
     </div>
@@ -12,6 +12,12 @@
         <div class="p-quest-list__select">
             <h3>QUEST</h3>
             <details>
+                <?php
+                /* [TODO]
+                こちらの<details>内にある<button>(各QUESTの詳細)のテキスト情報についてはデータベースで管理する
+                1/23時点では、一旦静的テキストを配置
+                */
+                ?>
                 <summary>PHP</summary>
                 <div class="p-quest-list__select-content">
                     <h4>1. Skill Doc を読む</h4>
@@ -109,7 +115,7 @@
                             <span>PHP</span>
                             <p>QUEST i [学習力][Level1] 続的に学習時間を確保できる</p>
                         </div>
-                        <time>00:40:00</time>
+                        <time date-time="00:40:00">00:40:00</time>
                     </button>
                 </li>
                 <li>
@@ -118,7 +124,7 @@
                             <span>PHP</span>
                             <p>QUEST ii [実装力][Level1] コードを手元で動かすことができる</p>
                         </div>
-                        <time>02:40:00</time>
+                        <time date-time="02:40:00">02:40:00</time>
                     </button>
                 </li>
             </ul>

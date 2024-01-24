@@ -1,0 +1,54 @@
+@use "../global" as *;
+
+.p-quest-detail {
+    margin-top: 120px;
+}
+
+.p-quest-detail__content {
+
+}
+
+.p-quest-detail__content-text {
+    display: inline-block;
+    padding: 30px 50px;
+    border-radius: 5px;
+    background-color: $green-bg;
+    h3 {
+        font-size: 2rem;
+        margin-bottom: 5px;
+    }
+    margin-top: 50px;
+}
+
+.p-quest-detail__time {
+    margin-top: 80px;
+}
+
+.p-quest-detail__time-measure {
+    margin-top: 50px;
+    border: 1px solid $gray;
+    border-radius: 10px;
+    padding: 50px;
+    width: 60%;
+}
+
+.p-quest-detail__time-measure-wrap {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.p-quest-detail__time-measure-result {
+    time {
+        font-size: 3rem;
+    }
+}
+
+.p-quest-detail__time-measure-text {
+    opacity: .8;
+    h3 {
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+    }
+    margin-top: 30px;
+}
