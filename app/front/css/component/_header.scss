@@ -1,0 +1,22 @@
+@use "../global" as *;
+
+
+.c-header {
+    position: fixed;
+    width: 100%;
+    padding: 40px 0;
+    background-color: $white;
+    z-index: 2;
+    & + * {
+        padding-top: 140px;
+    }
+}
+
+.c-header__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}

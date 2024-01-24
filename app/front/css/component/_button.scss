@@ -1,0 +1,21 @@
+@use "../global" as *;
+
+.c-button-link {
+    max-width: 150px;
+    a {
+        padding: 12px 18px;
+        width: 100%;
+        color: $white;
+        text-decoration: none;
+        background-color: $black;
+        border-radius: 3px;
+    }
+}
+
+.c-button {
+    max-width: 150px;
+    padding: 12px 18px;
+    color: $white;
+    background-color: $black;
+    border-radius: 3px;
+}

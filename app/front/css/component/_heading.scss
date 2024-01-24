@@ -1,0 +1,17 @@
+@use "../global" as *;
+
+.c-heading {
+    font-size: 3.2rem;
+    color: $heading;
+}
+
+.c-heading-wrap {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    button {
+        img {
+            max-width: 40px;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@use "../global" as *;
+
+.past-study {
+    margin-top: 120px;
+    & .c-select {
+        margin-top: 50px;
+    }
+}
+
+.past-study__list {
+    margin-top: 30px;
+    ul {
+        li {
+            > p {
+                margin-bottom: 5px;
+            }
+            button {
+                display: flex;
+                align-items: center;
+                gap: 50px;
+                min-height: 126px;
+                padding: 15px 0;
+                width: 100%;
+                border-top: 1px solid $border;
+                border-bottom: 1px solid $border;
+            }
+            & + li {
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+.past-study__list-content {
+    text-align: left;
+    span {
+        font-size: 2rem;
+        display: inline-block;
+        margin-right: 15px;
+    }
+    p {
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+    }
+}
