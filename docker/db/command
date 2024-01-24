@@ -1,0 +1,5 @@
+初期化
+mysql -u root -p < ./docker-entrypoint-initdb.d/initialize_db.sql
+
+ログイン
+mysql -u devuser -p -D appque

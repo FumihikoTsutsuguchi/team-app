@@ -1,0 +1,4 @@
+INSERT INTO `player_levels` VALUES
+(1,0),
+(2,60),
+(3,120)
