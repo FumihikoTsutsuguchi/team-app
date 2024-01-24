@@ -5,7 +5,7 @@ USE appque;
 CREATE TABLE avatars (
     avatar_id        SMALLINT UNSIGNED    NOT NULL    AUTO_INCREMENT,
     avatar_name      VARCHAR(20)          NOT NULL,
-    uri              VARCHAR(50)          NOT NULL,
+    file_name        VARCHAR(50)          NOT NULL,
     discription      VARCHAR(50)          NOT NULL,
     enabble_level    SMALLINT UNSIGNED    NOT NULL,
     enable_status    BOOLEAN              NOT NULL    DEFAULT FALSE,
@@ -64,7 +64,7 @@ CREATE TABLE quests (
     teq_category_id      SMALLINT UNSIGNED    NOT NULL,
     quest_category_id    SMALLINT UNSIGNED    NOT NULL,
     if_advanced          BOOLEAN              NOT NULL    DEFAULT FALSE,
-    discription          VARCHAR(200)         NOT NULL    DEFAULT '',
+    discription          VARCHAR(5000)         NOT NULL    DEFAULT '',
     PRIMARY KEY (quest_id),
     FOREIGN KEY (teq_category_id) REFERENCES teq_categorys (category_id) ON DELETE CASCADE,
     FOREIGN KEY (quest_category_id) REFERENCES quest_categorys (category_id) ON DELETE CASCADE
@@ -74,8 +74,8 @@ CREATE TABLE quests (
 CREATE TABLE records (
     started_at      DATETIME             NOT NULL    DEFAULT CURRENT_TIMESTAMP,
     finished_at     DATETIME             NOT NULL    DEFAULT CURRENT_TIMESTAMP    UNIQUE,
-    quest_id        SMALLINT UNSIGNED    NOT NULL    DEFAULT,
-    reference_id    SMALLINT UNSIGNED    NOT NULL    DEFAULT,
+    quest_id        SMALLINT UNSIGNED    NOT NULL,
+    reference_id    SMALLINT UNSIGNED    NOT NULL,
     PRIMARY KEY (started_at),
     FOREIGN KEY (quest_id) REFERENCES quests (quest_id) ON DELETE CASCADE,
     FOREIGN KEY (reference_id) REFERENCES lerning_references (reference_id) ON DELETE CASCADE
@@ -90,12 +90,15 @@ CREATE TABLE reports (
     PRIMARY KEY (reported_date)
 );
 
--- 書記データ読み込み
---  CREATE TABLE
---  source /docker-entrypoint-initdb.d/load_channels.dump ;
---  source /docker-entrypoint-initdb.d/load_genres.dump ;
---  source /docker-entrypoint-initdb.d/load_programs.dump ;
---  source /docker-entrypoint-initdb.d/load_seasons.dump ;
---  source /docker-entrypoint-initdb.d/load_episodes.dump ;
---  source /docker-entrypoint-initdb.d/load_time_slots.dump ;
---  source /docker-entrypoint-initdb.d/load_views.dump ;
+ユーザー作成
+CREATE USER IF NOT EXISTS devuser@localhost IDENTIFIED BY 'ppp';
+
+GRANT ALL ON *.* to devuser@localhost;
+
+-- 初期データ読み込み
+ source /docker-entrypoint-initdb.d/load_avatars.dump;
+ source /docker-entrypoint-initdb.d/load_player_levels.dump ;
+ source /docker-entrypoint-initdb.d/load_players.dump ;
+ source /docker-entrypoint-initdb.d/load_quest_categorys.dump ;
+ source /docker-entrypoint-initdb.d/load_teq_categorys.dump ;
+ source /docker-entrypoint-initdb.d/load_quests.dump ;
