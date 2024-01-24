@@ -1,6 +1,12 @@
 <?php require_once("./header.php"); ?>
 
 <div class="c-wrapper">
+    <div class="c-nav-breadcrumb">
+        <ol>
+            <li><a href="../front">TOP</a></li>
+            <li>アバター 一覧</li>
+        </ol>
+    </div>
     <form  action="" method="post" class="p-avatar">
         <h2 class="c-heading">アバター 一覧</h2>
         <div class="p-avatar__wrap">

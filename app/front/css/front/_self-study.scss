@@ -1,0 +1,39 @@
+@use "../global" as *;
+
+
+.p-self-study {
+    margin-top: 120px;
+}
+
+.p-self-study-list {
+    margin: 120px 0 80px;
+    ul {
+        display: flex;
+        gap: 30px;
+        li {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 15px;
+            max-width: 120px;
+            padding: 23px 20px 30px;
+            border: 1px solid #d8d8d8;
+            border-radius: 3px;
+            text-align: center;
+            > div {
+                max-width: 110px;
+                aspect-ratio: 110/90;
+                img {
+                    display: inline-block;
+                    margin-bottom: 10px;
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            p {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

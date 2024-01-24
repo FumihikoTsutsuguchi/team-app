@@ -52,7 +52,7 @@
                     <p>EXP (時間)</p>
                     <progress max="100" value="75"></progress>
                 </div>
-                <div class="c-button">
+                <div class="c-button-link">
                     <a href="./avatar.php">アバター 一覧</a>
                 </div>
             </div>

@@ -1,0 +1,25 @@
+@use "../global" as *;
+
+.c-select {
+    display: inline-block;
+    position: relative;
+    &::after {
+        position: absolute;
+        content: '';
+        width: 8px;
+        height: 8px;
+        right: 20px;
+        top: 47%;
+        transform: translateY(-50%) rotate(45deg);
+        border-bottom: 2px solid $black;
+        border-right: 2px solid $black;
+        z-index: 1;
+    }
+    select {
+        width: 360px;
+        padding: 12px 40px 14px 30px;
+        background-color: $green-bg;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+}

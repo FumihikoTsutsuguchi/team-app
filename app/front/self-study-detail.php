@@ -4,22 +4,20 @@
     <div class="c-nav-breadcrumb">
         <ol>
             <li><a href="../front">TOP</a></li>
-            <li><a href="./quest-list.php">QUEST一覧</a></li>
-            <li>QUEST詳細</li>
+            <li><a href="./quest-list.php">学習記録</a></li>
+            <li>教材詳細</li>
         </ol>
     </div>
     <div class="p-quest-detail">
         <div class="p-quest-detail__content">
-            <h2 class="c-heading">QUEST 詳細</h2>
+            <h2 class="c-heading">教材詳細</h2>
             <?php
             /* [TODO]
-            下記の<h3>にQUEST一覧ページで選択した「QUESTの単元」を動的に表示
-            <p>には「QUESTの内容」を表示
+            下記の<h3>に学習記録ページで選択した「本のタイトル」を動的に表示
             */
             ?>
             <div class="p-quest-detail__content-text">
-                <h3>PHP</h3>
-                <p>QUEST i [学習力][Level1] 継続的に学習時間を確保できる</p>
+                <h3>PHP 本格入門</h3>
             </div>
         </div>
         <div class="p-quest-detail__time">
@@ -32,8 +30,7 @@
                     </div>
                 </div>
                 <div class="p-quest-detail__time-measure-text">
-                    <h3>PHP</h3>
-                    <p>QUEST i [学習力][Level1] 継続的に学習時間を確保できる</p>
+                    <h3>PHP 本格入門</h3>
                 </div>
             </div>
         </div>
