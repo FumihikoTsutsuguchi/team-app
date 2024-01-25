@@ -3,6 +3,16 @@
 .c-avatar {
     display: inline-block;
     text-align: center;
+    padding: 10px;
+    border: 3px solid #00000000;
+    &.selected { // 選択時にjsでselected付与
+        border: 3px solid #F0E68C;
+        border-radius: 5px;
+    }
+    &:hover {
+        border: 3px solid #F0E68C;
+        border-radius: 5px;
+    }
 }
 
 .c-avatar__img {

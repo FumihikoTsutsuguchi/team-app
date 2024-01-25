@@ -10,3 +10,5 @@
  require_once("reports.php");
  require_once("references.php");
  require_once("avatars.php");
+ require_once("players.php");
+ require_once("quests.php");

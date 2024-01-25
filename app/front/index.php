@@ -1,5 +1,7 @@
 <?php require_once("./header.php"); ?>
 
+<?php list($playerLevel, $playerExp, $avatar) = getPlayersInfo();?>
+
 <main id="top">
     <div class="p-front__mv">
         <div class="p-front__mv-content">
