@@ -25,5 +25,5 @@ function dbConnect(): PDO
 //取得したデータを、HTMLエスケープする
 function escape($value)
 {
-    return htmlspecialchars(strval($value));
+    return htmlspecialchars(strval($value), ENT_QUOTES | ENT_HTML5, 'UTF-8');
 }

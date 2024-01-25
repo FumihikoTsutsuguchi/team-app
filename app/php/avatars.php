@@ -3,13 +3,13 @@
 function getAvatarId($get)
 {
     $pdo = dbConnect();
-    $pdo->beginTransaction();
+
     try {
+        //取得したいアバターのidを取得
         $query = 'SELECT avatar_id FROM avatars WHERE file_name = :avatarName';
         $statement = $pdo->prepare($query);
-        $statement->bindValue(':avatarName', $post['avatar'] . '.png', PDO::PARAM_STR);
+        $statement->bindValue(':avatarName', $get['avatar'] . '.png', PDO::PARAM_STR);
         $statement->execute();
-        $pdo->commit();
 
         return $statement->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
