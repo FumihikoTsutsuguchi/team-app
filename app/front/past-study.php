@@ -10,6 +10,11 @@
     <div class="past-study">
         <div class="c-heading">過去の学習一覧</div>
         <div class="c-select">
+            <?php
+            /* [TODO]
+            セレクトボックスで選んだ条件によって、過去の学習一覧(.past-study__list)のリストをソートできるようにする
+            */
+            ?>
             <select name="" id="">
                 <option value="">全ての記録を表示</option>
                 <option value="">全てのQUESTを表示</option>
@@ -51,3 +56,5 @@
         </div>
     </div>
 </div>
+
+<?php require_once("./footer.php"); ?>

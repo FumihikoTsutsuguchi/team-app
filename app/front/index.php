@@ -35,7 +35,7 @@
                     </table>
                 </div>
                 <div class="p-front__study-content-bar-graph">
-
+                    <canvas id="myChart"></canvas>
                 </div>
             </div>
         </div>
@@ -59,6 +59,9 @@
         </div>
     </div>
 </main>
+
+<?php // グラフライブラリ(chart.js)読み込み[TOPページのみ] ?>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 <?php require_once("./footer.php"); ?>

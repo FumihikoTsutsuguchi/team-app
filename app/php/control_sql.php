@@ -5,13 +5,13 @@ function dbConnect(): PDO
 {
     try {
         //接続情報
-        $dbinfo = 'mysql:host=localhost;dbname=appque;charset=utf8';
+        $dbinfo = 'mysql:host=db;dbname=appque;charset=utf8';
         $username = 'root';
         $password = 'password';
 
          //new PDO = PDO接続を呼び出す(PDOクラスのインスタンスを作成)
         $connectPDO = new PDO($dbinfo, $username, $password);
-        $connectPDO->setAttrubute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $connectPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         return $connectPDO;
     } catch (PDOException $e) {

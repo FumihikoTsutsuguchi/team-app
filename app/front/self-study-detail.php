@@ -22,17 +22,26 @@
         </div>
         <div class="p-quest-detail__time">
             <h2 class="c-heading">現在の学習時間</h2>
+            <?php
+            /* [TODO]
+            下記のストップウィッチで止めた時間(#js-stopwatch)を取得しQUEST内容・時間を保存
+            */
+            ?>
             <div class="p-quest-detail__time-measure">
                 <div class="p-quest-detail__time-measure-wrap">
-                    <button type="button"><img src="./img/icon/play.png" alt="再生ボタン" width="40px" height="40px"></button>
+                    <button id="js-stopwatchStart" type="button"><img src="./img/icon/play.png" alt="再生ボタン" width="40px" height="40px"></button>
+                    <button id="js-stopwatchStop" type="button"><img src="./img/icon/stop.png" alt="停止ボタン" width="40px" height="40px"></button>
                     <div class="p-quest-detail__time-measure-result">
-                        <time date-time="00:00:00">00:00:00</time>
+                        <time id="js-stopwatch" date-time="00:00:00">00:00:00</time>
                     </div>
                 </div>
                 <div class="p-quest-detail__time-measure-text">
                     <h3>PHP 本格入門</h3>
                 </div>
             </div>
+            <button class="c-button">戻る</button>
         </div>
     </div>
 </div>
+
+<?php require_once("./footer.php"); ?>
