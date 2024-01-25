@@ -108,6 +108,11 @@
             </details>
         </div>
         <div class="c-archive">
+            <?php
+            /* [TODO]
+            下記のリストに直近の学習内容・時間をアーカイブとして表示
+            */
+            ?>
             <ul>
                 <li>
                     <button class="c-archive-button">
@@ -131,3 +136,5 @@
         </div>
     </div>
 </div>
+
+<?php require_once("./footer.php"); ?>

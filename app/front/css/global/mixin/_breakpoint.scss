@@ -17,7 +17,7 @@
         }
     } @else if $breakpoint == tl_m {
         // TL medium
-        @media screen and (width <= 1136px) {
+        @media screen and (width <= 1180px) {
             @content;
         }
     } @else if $breakpoint == tl_l {

@@ -22,6 +22,10 @@
 
 .p-quest-detail__time {
     margin-top: 80px;
+    & .c-button {
+        margin-top: 30px;
+        margin-left: auto;
+    }
 }
 
 .p-quest-detail__time-measure {
@@ -34,11 +38,20 @@
 
 .p-quest-detail__time-measure-wrap {
     display: flex;
-    gap: 30px;
     align-items: center;
+    > button {
+        & + button {
+            margin-left: 10px;
+        }
+        &.disabled {
+            -webkit-filter: grayscale(1); /* Webkit */
+            filter: grayscale(1); /* W3C */
+        }
+    }
 }
 
 .p-quest-detail__time-measure-result {
+    margin-left: 50px;
     time {
         font-size: 3rem;
     }
