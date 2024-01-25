@@ -45,6 +45,7 @@
 }
 
 .p-front__study-content-total {
+    margin-bottom: 50px;
     table {
         border-radius: 5px;
         border: 1px solid $border;
@@ -70,6 +71,7 @@
 }
 
 .p-front__study-content-bar-graph {
+    max-width: 600px;
 }
 
 // アバターセクション

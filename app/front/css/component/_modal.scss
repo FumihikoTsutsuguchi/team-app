@@ -1,0 +1,60 @@
+@use "../global" as *;
+
+.c-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+.c-modal-content {
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    width: 50%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+    animation-duration: .7s;
+    border-radius: 5px;
+}
+.c-modal-header {
+    background: $green-bg;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    h1 {
+        margin: 1rem 0;
+    }
+}
+.c-modalClose {
+    font-size: 2.7rem;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.c-modal-body {
+    padding: 20px;
+    color: $black;
+    input {
+        background-color: $gray-bg;
+        border: 1px solid $gray;
+        border-radius: 3px;
+    }
+    > p {
+        margin-bottom: 5px;
+    }
+}
+
+.c-modal-body__img {
+    margin-top: 20px;
+}
+
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}

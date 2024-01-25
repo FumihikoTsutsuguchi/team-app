@@ -13,8 +13,9 @@
 }
 
 .c-button {
+    display: block;
     max-width: 150px;
-    padding: 12px 18px;
+    padding: 12px 35px;
     color: $white;
     background-color: $black;
     border-radius: 3px;

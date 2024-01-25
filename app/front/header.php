@@ -8,6 +8,8 @@
 
     <title>アプレンティス QUEST</title>
 
+    <?php //PHP関数読み込み ?>
+    <?php require_once("../php/for_include.php"); ?>
 </head>
 <body>
     <header class="c-header" role="banner">

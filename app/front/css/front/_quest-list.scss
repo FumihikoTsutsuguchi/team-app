@@ -16,13 +16,21 @@
         padding: 15px 30px;
         border: 1px solid $border;
         border-radius: 5px;
+        &:hover {
+            cursor: pointer;
+        }
         &::after {
             position: absolute;
-            content: "🔽";
-            width: 7px;
-            height: 7px;
-            top: 15px;
-            right: 34px;
+            content: '';
+            width: 8px;
+            height: 8px;
+            right: 20px;
+            top: 24px;
+            transform: translateY(-50%) rotate(45deg);
+            border-bottom: 2px solid $black;
+            border-right: 2px solid $black;
+            z-index: 1;
+            pointer-events: none;
         }
         & + details {
             margin-top: 10px;

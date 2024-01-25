@@ -10,7 +10,26 @@
     <div class="p-self-study">
         <div class="c-heading-wrap">
             <h2 class="c-heading">新しい教材を登録</h2>
-            <button><img src="./img/icon/plus.png" alt="プラスのアイコン"></button>
+            <button id="modalOpen" type="button"><img src="./img/icon/plus.png" alt="プラスのアイコン"></button>
+            <div id="easyModal" class="c-modal">
+                <?php
+                /* [TODO]
+                    教材名・画像パスをモーダル内で取得して、下記の教材ごとのリスト(.p-self-study-list)に動的に表示
+                */
+                ?>
+                <div class="c-modal-content">
+                    <div class="c-modal-header">
+                        <h1>教材を登録することができます</h1>
+                        <span class="c-modalClose">×</span>
+                    </div>
+                    <div class="c-modal-body">
+                        <p class="c-modal-body__book">教材名</p>
+                        <input type="text" name="" id="">
+                        <p class="c-modal-body__img">教材画像</p>
+                        <input type="file" name="" id="">
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="p-self-study-list">
             <ul>
@@ -46,6 +65,11 @@
         </div>
 
         <div class="c-archive">
+            <?php
+            /* [TODO]
+            下記のリストに直近の学習内容・時間をアーカイブとして表示
+            */
+            ?>
             <ul>
                 <li>
                     <button class="c-archive-button">
@@ -73,3 +97,5 @@
         </div>
     </div>
 </div>
+
+<?php require_once("./footer.php"); ?>
