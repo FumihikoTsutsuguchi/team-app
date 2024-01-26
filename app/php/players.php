@@ -52,8 +52,9 @@ function getCurrentAvatarId()
         $query = 'SELECT current_avatar_id FROM players';
         $statement = $pdo->prepare($query);
         $statement->execute();
+        $current_avatar_id = $statement->fetch(PDO::FETCH_ASSOC);
 
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        return $current_avatar_id['current_avatar_id'];
     } catch (PDOException $e) {
         echo "取得失敗";
         return false;
