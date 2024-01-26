@@ -1,3 +1,4 @@
 INSERT INTO `quest_categorys` VALUES
 (1,'Skill Doc'),
-(2,'QUEST')
+(2,'QUEST'),
+(3,'提出QUEST')
