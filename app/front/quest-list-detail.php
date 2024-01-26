@@ -1,5 +1,11 @@
 <?php require_once("./header.php"); ?>
 
+<?php
+    $getQuestId = $_GET['id'];
+    $result = getQuestListDetail($getQuestId);
+?>
+
+
 <div class="c-wrapper">
     <div class="c-nav-breadcrumb">
         <ol>

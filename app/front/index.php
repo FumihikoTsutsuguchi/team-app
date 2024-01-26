@@ -1,6 +1,6 @@
 <?php require_once("./header.php"); ?>
 
-<?php list($playerLevel, $playerExp, $avatar) = getPlayersInfo();?>
+<?php list($playerLevel, $playerExp, $avatar_path, $avatar_name, $requireExp) = getPlayersInfo();?>
 
 <main id="top">
     <div class="p-front__mv">
@@ -46,9 +46,9 @@
             <div class="p-front__avatar-content">
                 <div class="p-front__avatar-content-avatar">
                     <div class="p-front__avatar-content-img">
-                        <img src="<?php echo $avatar; ?>" alt="">
+                        <img src="<?php echo $avatar_path; ?>" alt="">
                     </div>
-                    <p>原始人</p>
+                    <p><?php echo $avatar_name; ?></p>
                 </div>
                 <div class="p-front__avatar-content-level">
                     <p>プレイヤーの現在のLv</p>
@@ -62,7 +62,7 @@
                             <span>0</span><span>60</span>
                         </p>
                         <div class="p-front__avatar-content-status-limit">
-                            <p>次のレベルまで<span><?php echo (60 - $playerExp); ?></span>分</p>
+                            <p>次のレベルまで<span><?php echo $requireExp; ?></span>分</p>
                         </div>
                     </div>
                 </div>
