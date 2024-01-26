@@ -104,3 +104,4 @@ GRANT ALL ON *.* to devuser@localhost;
  source /docker-entrypoint-initdb.d/load_lerning_references.dump ;
  source /docker-entrypoint-initdb.d/load_quests.dump ;
  source /docker-entrypoint-initdb.d/load_sample_records.dump ;
+ source /docker-entrypoint-initdb.d/load_sample_reports.dump ;
