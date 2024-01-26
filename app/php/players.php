@@ -42,3 +42,23 @@ function getPlayersInfo()
             // 処理なし
     }
 }
+
+function getCurrentAvatarId()
+{
+    $pdo = dbConnect();
+
+    try {
+        //設定アバターid取得
+        $query = 'SELECT current_avatar_id FROM players';
+        $statement = $pdo->prepare($query);
+        $statement->execute();
+        $current_avatar_id = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $current_avatar_id['current_avatar_id'];
+    } catch (PDOException $e) {
+        echo "取得失敗";
+        return false;
+    } finally {
+            // 処理なし
+    }
+}
