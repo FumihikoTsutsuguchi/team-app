@@ -27,37 +27,26 @@ function insertReferences()
     }
 }
 
-function selectReference()
+function getLearningReferencesTitle()
 {
+    $count = 0;
     $pdo = dbConnect();
 
     try {
-        $query = file_get_contents('select.sql');
+        $query = 'SELECT reference_title FROM lerning_references';
         $statement = $pdo->prepare($query);
         $statement->execute();
 
-        return true;
+        while ($result = $statement->fetch(PDO::FETCH_ASSOC)) {
+            //教材のリストを作成
+            $list[$count] = $result['reference_title'];
+            $count++;
+        }
+
+        return $list;
     } catch (PDOException $e) {
         echo "取得失敗";
-        return false;
-    } finally {
-        // 処理なし
-    }
-}
-
-function deleteReference()
-{
-    $pdo = dbConnect();
-
-    try {
-        $query = file_get_contents('delete.sql');
-        $statement = $pdo->prepare($query);
-        $statement->execute();
-
-        return true;
-    } catch (PDOException $e) {
-        echo "削除失敗";
-        return false;
+        return $e;
     } finally {
         // 処理なし
     }
