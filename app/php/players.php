@@ -9,8 +9,20 @@ function getPlayersInfo()
         $pdo->beginTransaction();
 
     try {
-        //プレイヤーレベル、経験値、設定アバターid取得
-        $query = 'SELECT current_level, current_exp,current_avatar_id FROM players';
+        //プレイヤーレベル、経験値、設定アバターid、アバター名、レベルアップに必要な経験値取得
+        $query = <<<EOT
+        SELECT
+            ply.*,
+            ava.avatar_name,
+            ava.file_name,
+            lev.require_exp
+        FROM
+            players AS ply
+            INNER JOIN avatars AS ava
+            ON ply.current_avatar_id = ava.avatar_id
+            INNER JOIN player_levels AS lev
+            ON ply.current_level = lev.player_level
+        EOT;
         $statement = $pdo->prepare($query);
         $statement->execute();
 
@@ -18,46 +30,20 @@ function getPlayersInfo()
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         $playerLevel = $result['current_level'];
         $playerExp = $result['current_exp'];
-        $avatar_id = $result['current_avatar_id'];
-
-        //アバター画像パス取得
-        $query = 'SELECT file_name FROM avatars WHERE avatar_id = :avatar_id';
-        $statement2 = $pdo->prepare($query);
-        $statement2->bindValue(':avatar_id', $avatar_id, PDO::PARAM_STR);
-        $statement2->execute();
-
-        //戻り値に格納
-        $result2 = $statement2->fetch(PDO::FETCH_ASSOC);
-        $fileName = escape($result2['file_name']);
-        $avatar = "./img/avatar/" . $fileName;
+        $nextLevel = $result['require_exp'];
+        $requireExp = $nextLevel - $playerExp;
+        $avatar_name = $result['avatar_name'];
+        $fileName = escape($result['file_name']);
+        $avatar_path = "./img/avatar/" . $fileName;
 
         //トランザクションをコミット
         $pdo->commit();
-        return array($playerLevel, $playerExp, $avatar);
+        return array($playerLevel, $playerExp, $avatar_path, $avatar_name, $requireExp);
+
     } catch (PDOException $e) {
             $pdo->rollback();
             echo "取得失敗";
         return;
-    } finally {
-            // 処理なし
-    }
-}
-
-function getCurrentAvatarId()
-{
-    $pdo = dbConnect();
-
-    try {
-        //設定アバターid取得
-        $query = 'SELECT current_avatar_id FROM players';
-        $statement = $pdo->prepare($query);
-        $statement->execute();
-        $current_avatar_id = $statement->fetch(PDO::FETCH_ASSOC);
-
-        return $current_avatar_id['current_avatar_id'];
-    } catch (PDOException $e) {
-        echo "取得失敗";
-        return false;
     } finally {
             // 処理なし
     }
