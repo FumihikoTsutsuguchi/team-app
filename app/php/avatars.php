@@ -38,7 +38,7 @@ function setAvatarIdToPlayers($post)
         //取得したavatar_idをplayersへ格納
         $query = 'UPDATE players SET current_avatar_id = :avatar_id';
         $statement2 = $pdo->prepare($query);
-        $statement2->bindValue(':avatar_id', $avatar_id, PDO::PARAM_INT);
+        $statement2->bindValue(':avatar_id', $avatar_id['avatar_id'], PDO::PARAM_INT);
         $statement2->execute();
 
         //トランザクションをコミット
