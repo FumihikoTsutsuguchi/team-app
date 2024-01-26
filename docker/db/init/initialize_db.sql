@@ -90,7 +90,7 @@ CREATE TABLE reports (
     PRIMARY KEY (reported_date)
 );
 
-ユーザー作成
+-- ユーザー作成
 CREATE USER IF NOT EXISTS devuser@localhost IDENTIFIED BY 'ppp';
 
 GRANT ALL ON *.* to devuser@localhost;
