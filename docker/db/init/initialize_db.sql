@@ -90,7 +90,7 @@ CREATE TABLE reports (
     PRIMARY KEY (reported_date)
 );
 
-ユーザー作成
+-- ユーザー作成
 CREATE USER IF NOT EXISTS devuser@localhost IDENTIFIED BY 'ppp';
 
 GRANT ALL ON *.* to devuser@localhost;
@@ -101,4 +101,7 @@ GRANT ALL ON *.* to devuser@localhost;
  source /docker-entrypoint-initdb.d/load_players.dump ;
  source /docker-entrypoint-initdb.d/load_quest_categorys.dump ;
  source /docker-entrypoint-initdb.d/load_teq_categorys.dump ;
+ source /docker-entrypoint-initdb.d/load_lerning_references.dump ;
  source /docker-entrypoint-initdb.d/load_quests.dump ;
+ source /docker-entrypoint-initdb.d/load_sample_records.dump ;
+ source /docker-entrypoint-initdb.d/load_sample_reports.dump ;
