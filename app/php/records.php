@@ -91,21 +91,26 @@ function getPlaytime()
         //直近一週間分の勉強時間を取得
         $query = <<<EOT
         SELECT
-            DATE_FORMAT(started_at, '%Y-%m-%d') AS date,
-            TIME_FORMAT(SUM(TIMEDIFF(finished_at, started_at)), '%H:%i:%s') AS learning_time
+            reported_date AS date,
+            learning_per_day AS learning_time
         FROM
-            records
+            reports
+        WHERE
+            reported_date BETWEEN  (CURDATE() - INTERVAL 7 DAY) AND (CURDATE() + INTERVAL 1 DAY)
         GROUP BY
-            DATE_FORMAT(started_at, '%Y-%m-%d')
+            reported_date
         ORDER BY
-            DATE_FORMAT(started_at, '%Y-%m-%d') DESC
+            reported_date DESC
         LIMIT 7
         EOT;
         $statement = $pdo->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-        $learningTimes = date('G時間i分', strtotime($results[0]['learning_time']));
-
+        // $learningTimes = [];
+        foreach ($results as $key => $result) {
+            $learningTimes[$key]['date'] = $result['date'];
+            $learningTimes[$key]['learning_time'] = date('G時間i分', strtotime($result['learning_time']));
+        }
         //直近１週間の合計勉強時間を表示
         $query = <<<EOT
         SELECT
@@ -134,6 +139,7 @@ function getPlaytime()
 
         //トランザクションをコミット
         $pdo->commit();
+        //leaningTimesは['date']['learning_time]の要素を持ちます。
         return array($learningTimes, $weeklyLearningTime, $totalLearningTime);
     } catch (PDOException $e) {
             $pdo->rollback();
