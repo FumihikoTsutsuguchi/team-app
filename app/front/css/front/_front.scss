@@ -108,11 +108,12 @@
 
 .p-front__avatar-content-status {
     > p {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
     }
     margin: 50px 0px;
     progress {
-        width: 360px;
+        width: 100%;
         height: 20px;
         -webkit-appearance: none;
     }
@@ -123,5 +124,38 @@
     progress::-webkit-progress-value {
         background-color: green;
         border-radius: 5px;
+    }
+}
+
+.p-front__avatar-content-status-number {
+    width: 360px;
+    > p {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.p-front__avatar-content-status-limit {
+    text-align: right;
+    p {
+        font-size: 1.3rem;
+        span {
+            font-weight: 800;
+        }
+    }
+}
+
+.p-front__avatar-content-level {
+    margin-top: 50px;
+    > p {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+    }
+    > div {
+        span {
+            display: inline-block;
+            margin-right: 5px;
+        }
     }
 }
