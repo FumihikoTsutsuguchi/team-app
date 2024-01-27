@@ -1,6 +1,9 @@
 <?php require_once("./header.php"); ?>
 
-<?php $referencesTitle = getLearningReferencesTitle();?>
+<?php
+    $referencesTitle = getLearningReferencesTitle();
+    $records = selectRecords(1);
+ ?>
 
 <div class="c-wrapper">
     <div class="c-nav-breadcrumb">
@@ -67,34 +70,37 @@
         </div>
 
         <div class="c-archive">
-            <?php
-            /* [TODO]
-            下記のリストに直近の学習内容・時間をアーカイブとして表示
-            */
-            ?>
+            <p>今日の記録</p>
             <ul>
-                <li>
-                    <button class="c-archive-button">
-                        <div class="c-archive-content">
-                            <div>
-                                <img src="./img/icon/study-dummy.png" alt="">
-                            </div>
-                            <p>PHP 本格入門</p>
-                        </div>
-                        <time date-time="00:40:00">00:40:00</time>
-                    </button>
-                </li>
-                <li>
-                    <button class="c-archive-button">
-                        <div class="c-archive-content">
-                            <div>
-                                <img src="./img/icon/study-dummy.png" alt="">
-                            </div>
-                            <p>もう怖くない Git !</p>
-                        </div>
-                        <time date-time="02:40:00">02:40:00</time>
-                    </button>
-                </li>
+                <?php
+                    if (count($records) === 0) {
+                        echo <<<EOT
+                            <li>
+                                <button class="c-archive-button">
+                                    <div class="c-archive-content">
+                                        <p>今日はまだ記録していません(T^T)</p>
+                                    </div>
+                                </button>
+                            </li>
+                        EOT;
+                    } else {
+                        for ($i = 0; $i < count($records); $i++) {
+                            echo <<<EOT
+                                <li>
+                                    <button class="c-archive-button">
+                                        <div class="c-archive-content">
+                                            <div>
+                                                <img src="./img/icon/study-dummy.png" alt="">
+                                            </div>
+                                            <p>{$records[$i]['title']}</p>
+                                        </div>
+                                        <time date-time="02:40:00">{$records[$i]['learning_time']}</time>
+                                    </button>
+                                </li>
+                            EOT;
+                        }
+                    }
+                ?>
             </ul>
         </div>
     </div>
