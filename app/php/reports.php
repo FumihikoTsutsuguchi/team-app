@@ -22,17 +22,30 @@ function insertReports()
         return false;
     }
 }
-
-function selectReports()
+//
+function selectReports($date)
 {
     $pdo = dbConnect();
 
     try {
-        $query = file_get_contents('selsct.sql');
+        $query = <<<EOT
+        SELECT
+            *
+        FROM
+            reports
+        WHERE
+            reported_date = :date
+        EOT;
         $statement = $pdo->prepare($query);
+        $statement->bindValue(':date', $date, PDO::PARAM_STR);
         $statement->execute();
-
-        return true;
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+// 戻り値例：array ( 'reported_date' => '2024-01-28',
+//                  'what_learned' => 'ＤＢ paiza',
+//                  'introspection' => 'がんばりました！',
+//                  'learning_per_day' => '12:00:00',
+//                )
+        return $result;
     } catch (PDOException $e) {
         echo "取得失敗";
         return false;
