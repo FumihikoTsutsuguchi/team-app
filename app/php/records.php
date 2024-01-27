@@ -56,18 +56,19 @@ function selectRecords(int $recordsType)
             EOT;
         } elseif ($recordsType === 1) {
             $query = <<<EOT
-            SELECT
-                teq.category_name AS category,
-                ref.reference_title AS title,
-                TIME_FORMAT(TIMEDIFF(finished_at, started_at), '%H:%i:%s') AS learning_time
-            FROM
-                records AS rec
-                INNER JOIN lerning_references AS ref
-                ON rec.reference_id = ref.reference_id
-                INNER JOIN teq_categorys AS teq
-                ON ref.teq_category_id = teq.category_id
-            WHERE
-                rec.reference_id <> 1
+                SELECT
+                    teq.category_name AS category,
+                    ref.reference_title AS title,
+                    TIME_FORMAT(TIMEDIFF(finished_at, started_at), '%H:%i:%s') AS learning_time
+                FROM
+                    records AS rec
+                    INNER JOIN lerning_references AS ref
+                    ON rec.reference_id = ref.reference_id
+                    INNER JOIN teq_categorys AS teq
+                    ON ref.teq_category_id = teq.category_id
+                WHERE
+                    rec.reference_id <> 1
+                    AND DATE_FORMAT(rec.started_at, '%Y-%m-%d') = CURDATE()
             EOT;
         } elseif ($recordsType === 2) {
             $query = <<<EOT
