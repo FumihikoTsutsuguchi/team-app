@@ -2,6 +2,8 @@
 
 <?php $phpQuestList = getQuestList(4);?>
 <?php $dbQuestList = getQuestList(6);?>
+<?php $records = selectRecords(0);?>
+
 
 <div class="c-wrapper">
     <div class="c-nav-breadcrumb">
@@ -113,33 +115,38 @@
             </form>
         </div>
         <div class="c-archive">
-            <?php
-            /* [TODO]
-            下記のリストに直近の学習内容・時間をアーカイブとして表示
-            */
-            ?>
             <ul>
-                <li>
-                    <button class="c-archive-button">
-                        <div class="c-archive-content">
-                            <span>PHP</span>
-                            <p>QUEST i [学習力][Level1] 続的に学習時間を確保できる</p>
-                        </div>
-                        <time date-time="00:40:00">00:40:00</time>
-                    </button>
-                </li>
-                <li>
-                    <button class="c-archive-button">
-                        <div class="c-archive-content">
-                            <span>PHP</span>
-                            <p>QUEST ii [実装力][Level1] コードを手元で動かすことができる</p>
-                        </div>
-                        <time date-time="02:40:00">02:40:00</time>
-                    </button>
-                </li>
+               <?php
+                    if (count($records) === 0) {
+                        echo <<<EOT
+                            <li>
+                                <button class="c-archive-button">
+                                    <div class="c-archive-content">
+                                        <p>今日はまだ記録していません(T^T)</p>
+                                    </div>
+                                </button>
+                            </li>
+                        EOT;
+                    } else {
+                        for ($i = 0; $i < count($records); $i++) {
+                            echo <<<EOT
+                                <li>
+                                    <button class="c-archive-button">
+                                        <div class="c-archive-content">
+                                            <div>
+                                                <img src="./img/icon/study-dummy.png" alt="">
+                                            </div>
+                                            <p>{$records[$i]['title']}</p>
+                                        </div>
+                                        <time date-time="02:40:00">{$records[$i]['learning_time']}</time>
+                                    </button>
+                                </li>
+                            EOT;
+                        }
+                    }
+                ?>
             </ul>
         </div>
     </div>
 </div>
-
 <?php require_once("./footer.php"); ?>

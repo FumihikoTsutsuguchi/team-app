@@ -1,6 +1,6 @@
 <?php
     require_once("./header.php");
-    $records = selectRecords(3);
+    $records = selectRecords(2);
 ?>
 
 <div class="c-wrapper">
