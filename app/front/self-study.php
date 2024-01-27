@@ -1,5 +1,7 @@
 <?php require_once("./header.php"); ?>
 
+<?php $referencesTitle = getLearningReferencesTitle();?>
+
 <div class="c-wrapper">
     <div class="c-nav-breadcrumb">
         <ol>
