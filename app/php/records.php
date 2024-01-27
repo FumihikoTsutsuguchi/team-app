@@ -238,17 +238,22 @@ function judgePlayerLevelUp($requireExp)
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         //時間(h)にフォーマット
-        $lastRecordDiff = date('H', strtotime($result['timediff']));
+        $timeDiff = date('H', strtotime($result['timediff']));
+        $changeTimeToInt = intval($timeDiff);
 
         //経過時間＞必要経験値となるか
-        if ($lastRecordDiff >= $requireExp) {
-            playerLevelUp();
-            return true;
+        if ($changeTimeToInt >= $requireExp) {
+            $addExp = $changeTimeToInt - $requireExp;
+            playerLevelUp($addExp);
+            $result = true;
+        } else {
+            addPlayerCurrentExp($changeTimeToInt);
+            $result = false;
         }
 
         //トランザクションをコミット
         $pdo->commit();
-        return false;
+        return $result;
     } catch (PDOException $e) {
         $pdo->rollback();
         echo "取得失敗";
