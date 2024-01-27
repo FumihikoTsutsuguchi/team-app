@@ -29,17 +29,21 @@
             ?>
             <div class="p-quest-detail__time-measure">
                 <div class="p-quest-detail__time-measure-wrap">
-                    <button id="js-stopwatchStart" type="button"><img src="./img/icon/play.png" alt="再生ボタン" width="40px" height="40px"></button>
-                    <button id="js-stopwatchStop" type="button"><img src="./img/icon/stop.png" alt="停止ボタン" width="40px" height="40px"></button>
-                    <div class="p-quest-detail__time-measure-result">
-                        <time id="js-stopwatch" date-time="00:00:00">00:00:00</time>
-                    </div>
+                    <form action="" method="post">
+                        <button id="js-stopwatchStart" type="button" name="start"><img src="./img/icon/play.png" alt="再生ボタン" width="40px" height="40px"></button>
+                        <button id="js-stopwatchStop" type="submit" name="stop"><img src="./img/icon/stop.png" alt="停止ボタン" width="40px" height="40px"></button>
+                        <div class="p-quest-detail__time-measure-result">
+                            <time id="js-stopwatch" date-time="00:00:00">00:00:00</time>
+                        </div>
+                        <input id="id-hidden" type="hidden" name="questId">
+                        <input id="time-hidden" type="hidden" name="studyTime">
+                    </form>
                 </div>
                 <div class="p-quest-detail__time-measure-text">
                     <h3>PHP 本格入門</h3>
                 </div>
             </div>
-            <button class="c-button">戻る</button>
+            <div class="c-button-link"><a href="./self-study.php">戻る</a></div>
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@
                 <img src="./img/avatar/hachi.png" alt="">
             </div>
             <div class="p-front__mv-content-button">
-                <a href=""><img src="./img/icon/start.png" alt=""></a>
+                <a href="./quest-list.php"><img src="./img/icon/start.png" alt=""></a>
             </div>
         </div>
     </div>
