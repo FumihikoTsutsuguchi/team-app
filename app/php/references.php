@@ -35,7 +35,12 @@ function getLearningReferencesTitle()
     $pdo = dbConnect();
 
     try {
-        $query = 'SELECT reference_title FROM lerning_references';
+        $query = <<<EOT
+            SELECT
+                *
+            FROM
+                lerning_references
+        EOT;
         $statement = $pdo->prepare($query);
         $statement->execute();
 
