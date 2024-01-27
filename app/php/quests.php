@@ -7,12 +7,14 @@ function getQuestList($teq_category_id)
     try {
         //クエスト一覧を取得
         $query = <<<EOT
-            SELECT que.quest_no ,
-                   que.quest_title,
-                   que.if_advanced,
-                   teq.category_name AS teqName,
-                   que_category.category_name AS queName
-            FROM quests AS que
+            SELECT
+                que.quest_no ,
+                que.quest_title,
+                que.if_advanced,
+                teq.category_name AS teqName,
+                que_category.category_name AS queName
+            FROM
+                quests AS que
                 INNER JOIN teq_categorys AS teq
                 ON que.teq_category_id = teq.category_id
                 INNER JOIN quest_categorys AS que_category

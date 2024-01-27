@@ -1,6 +1,9 @@
 <?php require_once("./header.php"); ?>
+<?php $questLists[] = getQuestList(2);?>
 <?php $questLists[] = getQuestList(4);?>
+<?php $questLists[] = getQuestList(5);?>
 <?php $questLists[] = getQuestList(6);?>
+<?php $questLists[] = getQuestList(8);?>
 <?php $records = selectRecords(0);?>
 
 
