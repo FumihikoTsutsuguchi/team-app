@@ -1,10 +1,14 @@
 <?php require_once("./header.php"); ?>
-
 <?php
-    $getQuestId = $_GET['id'];
-    $result = getQuestListDetail($getQuestId);
-?>
+$getQuestId = $_GET['id'];
+$questInfo = getQuestListDetail($getQuestId);
 
+if (array_key_exists('start', $_POST)) {
+    $startTime = startRecordsForQuest($getQuestId);
+} elseif (array_key_exists('stop', $_POST)) {
+    finishedRecordsForQuest($getId, $startedTime);
+}
+?>
 
 <div class="c-wrapper">
     <div class="c-nav-breadcrumb">
@@ -37,8 +41,10 @@
             ?>
             <div class="p-quest-detail__time-measure">
                 <div class="p-quest-detail__time-measure-wrap">
-                    <button id="js-stopwatchStart" type="button"><img src="./img/icon/play.png" alt="再生ボタン" width="40px" height="40px"></button>
-                    <button id="js-stopwatchStop" type="button"><img src="./img/icon/stop.png" alt="停止ボタン" width="40px" height="40px"></button>
+                    <form action="" method="post">
+                        <button id="js-stopwatchStart" type="submit" name="start"><img src="./img/icon/play.png" alt="再生ボタン" width="40px" height="40px"></button>
+                        <button id="js-stopwatchStop" type="submit" name="stop"><img src="./img/icon/stop.png" alt="停止ボタン" width="40px" height="40px"></button>
+                    </form>
                     <div class="p-quest-detail__time-measure-result">
                         <time id="js-stopwatch" date-time="00:00:00">00:00:00</time>
                     </div>

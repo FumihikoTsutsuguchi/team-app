@@ -1,31 +1,38 @@
 <?php
 
-function insertRecords()
+function startRecordsForQuest($getId)
 {
     $pdo = dbConnect();
 
+    //トランザクション開始
+    $pdo->beginTransaction();
+
     try {
-        /**
-        * クエリ内容一例 :
-        * INSERT INTO records(started_at, finished_at, quest_id, reference_id)
-        *        VALUES(:started_at, CURRENT_TIMESTAMP, :quest_id, :reference_id);
-        */
-        $query = file_get_contents('insert.sql');
+        //現在の時刻を取得
+        $query = 'SELECT NOW() AS startTime';
         $statement = $pdo->prepare($query);
-        //date : 2000-07-01T00:00:00+00:00
-        $statement->bindValue(':started_at', date(DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000)), PDO::PARAM_STR);
-        $statement->bindValue(':quest_id', 1, PDO::PARAM_INT);
-        $statement->bindValue(':reference_id', 1, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $recordedTime = $result['startTime'];
+
+        //計測開始したクエストIDで記録を作成
+        $query = 'INSERT INTO records(started_at, quest_id, reference_id) VALUES(:started_at, :quest_id, 1)';
+        $statement = $pdo->prepare($query);
+        $statement->bindValue(':started_at', $recordedTime, PDO::PARAM_STR);
+        $statement->bindValue(':quest_id', $getId, PDO::PARAM_INT);
         $statement->execute();
 
-        return true;
+        //トランザクションをコミット
+        $pdo->commit();
+        return $recordedTime;
     } catch (PDOException $e) {
+        $pdo->rollback();
         echo "登録失敗";
-        return false;
     } finally {
         // 処理なし
     }
 }
+
 //教材、QUEST、過去の学習一覧で学習記録の内容を取得
 function selectRecords(int $recordsType)
 {
@@ -99,19 +106,25 @@ function selectRecords(int $recordsType)
     }
 }
 
-function renewRecords()
+function finishedRecordsForQuest($getId, $startedTime)
 {
     $pdo = dbConnect();
 
     try {
-        $query = file_get_contents('renew.sql');
+        $query = <<<EOT
+        UPDATE
+              records
+        SET
+              finished_at=NOW()
+        WHERE
+             quest_id = :quest_id AND reference_id = 1 AND started_at = :started_at
+        EOT;
         $statement = $pdo->prepare($query);
+        $statement->bindValue(':quest_id', $getId, PDO::PARAM_INT);
+        $statement->bindValue(':started_at', $startedTime, PDO::PARAM_STR);
         $statement->execute();
-
-        return true;
     } catch (PDOException $e) {
         echo "更新失敗";
-        return false;
     } finally {
         // 処理なし
     }
