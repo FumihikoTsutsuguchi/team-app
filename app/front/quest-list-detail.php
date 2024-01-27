@@ -1,8 +1,16 @@
 <?php require_once("./header.php"); ?>
 <?php
-$getQuestId = $_GET['id'];
+//GETリクエストからクエストIDを取得
+$getQuestId = $_GET['quest_id'];
+
+//クエストIDからクエスト詳細情報を取得
 $questInfo = getQuestListDetail($getQuestId);
 
+//連想配列名からカテゴリー名("PHP", "SkillDok"など)を取得
+$teqName = array_keys($questInfo);
+$queName = array_keys($questInfo[$teqName[0]]);
+
+//当ページのPOSTリクエストより、学習記録を作成
 if (array_key_exists('start', $_POST)) {
     $startTime = startRecordsForQuest($getQuestId);
 } elseif (array_key_exists('stop', $_POST)) {
@@ -28,8 +36,8 @@ if (array_key_exists('start', $_POST)) {
             */
             ?>
             <div class="p-quest-detail__content-text">
-                <h3>PHP</h3>
-                <p>QUEST i [学習力][Level1] 継続的に学習時間を確保できる</p>
+                <h3><?=$teqName[0]?></h3>
+                <p><?=$questInfo[$teqName[0]][$queName[0]]?></p>
             </div>
         </div>
         <div class="p-quest-detail__time">
@@ -50,8 +58,8 @@ if (array_key_exists('start', $_POST)) {
                     </div>
                 </div>
                 <div class="p-quest-detail__time-measure-text">
-                    <h3>PHP</h3>
-                    <p>QUEST i [学習力][Level1] 継続的に学習時間を確保できる</p>
+                    <h3><?=$teqName[0]?></h3>
+                    <p><?=$questInfo[$teqName[0]][$queName[0]]?></p>
                 </div>
             </div>
             <button class="c-button">戻る</button>

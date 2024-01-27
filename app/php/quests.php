@@ -2,8 +2,6 @@
 
 function getQuestList($teq_category_id)
 {
-    $beforeStr = array("1", "2", "3", "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15");
-    $afterStr = array("i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix","x", "xi", "xii", "xiii", "xiv", "xv");
     $pdo = dbConnect();
 
     try {
@@ -38,7 +36,7 @@ function getQuestList($teq_category_id)
             $teqName = $result['teqName'];
             $queName = $result['queName'];
             $questNo = $result['quest_no'];
-            $replaceStr = str_replace($beforeStr, $afterStr, $result['quest_no']);
+            $replaceStr = changeNumToRome($result['quest_no']);
             if ($result['if_advanced'] === "1") {
                 $questList[$teqName][$queName][$questNo] = "QUEST " . $replaceStr . " " . $result['quest_title'] . "(advanced)";
             } else {
@@ -57,8 +55,6 @@ function getQuestList($teq_category_id)
 
 function getQuestListDetail($getQuestId)
 {
-    $beforeStr = array("1", "2", "3", "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15");
-    $afterStr = array("i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix","x", "xi", "xii", "xiii", "xiv", "xv");
     $pdo = dbConnect();
 
     try {
@@ -83,7 +79,7 @@ function getQuestListDetail($getQuestId)
 
         $teqCategoryName = $result['teqName'];
         $questCategoryName = $result['queName'];
-        $replaceStr = str_replace($beforeStr, $afterStr, $result['quest_no']);
+        $replaceStr = changeNumToRome($result['quest_no']);
         if ($result['if_advanced'] === "1") {
             $row = "QUEST " . $replaceStr . " " . $result['quest_title'] . "(advanced)";
         } else {

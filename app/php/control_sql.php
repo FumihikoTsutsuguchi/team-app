@@ -22,6 +22,17 @@ function dbConnect(): PDO
     }
 }
 
+//取得した文字列型の数字をローマ数字に変換
+function changeNumToRome($value)
+{
+    $beforeStr = array("1", "2", "3", "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15");
+    $afterStr = array("i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix","x", "xi", "xii", "xiii", "xiv", "xv");
+
+    $replaceStr = str_replace($beforeStr, $afterStr, $value);
+
+    return $replaceStr;
+}
+
 //取得したデータを、HTMLエスケープする
 function escape($value)
 {
