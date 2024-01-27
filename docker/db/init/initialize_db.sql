@@ -74,8 +74,8 @@ CREATE TABLE quests (
 CREATE TABLE records (
     started_at      DATETIME             NOT NULL    DEFAULT CURRENT_TIMESTAMP,
     finished_at     DATETIME             NOT NULL    DEFAULT CURRENT_TIMESTAMP    UNIQUE,
-    quest_id        SMALLINT UNSIGNED    NOT NULL,
-    reference_id    SMALLINT UNSIGNED    NOT NULL,
+    quest_id        SMALLINT UNSIGNED    NOT NULL    DEFAULT 1,
+    reference_id    SMALLINT UNSIGNED    NOT NULL    DEFAULT 1,
     PRIMARY KEY (started_at),
     FOREIGN KEY (quest_id) REFERENCES quests (quest_id) ON DELETE CASCADE,
     FOREIGN KEY (reference_id) REFERENCES lerning_references (reference_id) ON DELETE CASCADE
