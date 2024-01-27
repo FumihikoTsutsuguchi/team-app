@@ -13,11 +13,15 @@ function getQuestList($teq_category_id)
                    teq.category_name AS teqName,
                    que_category.category_name AS queName
             FROM quests AS que
-            INNER JOIN teq_categorys AS teq
-            ON que.teq_category_id = teq.category_id
-            INNER JOIN quest_categorys AS que_category
-            ON que.quest_category_id = que_category.category_id
-            WHERE que.teq_category_id = :teq_category_id
+                INNER JOIN teq_categorys AS teq
+                ON que.teq_category_id = teq.category_id
+                INNER JOIN quest_categorys AS que_category
+                ON que.quest_category_id = que_category.category_id
+            WHERE
+                que.teq_category_id = :teq_category_id
+            ORDER BY
+                que.quest_id ASC
+
         EOT;
         $statement = $pdo->prepare($query);
         $statement->bindValue(':teq_category_id', $teq_category_id, PDO::PARAM_INT);
