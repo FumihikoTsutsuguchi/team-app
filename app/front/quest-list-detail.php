@@ -50,21 +50,52 @@ if (array_key_exists('start', $_POST)) {
             <div class="p-quest-detail__time-measure">
                 <div class="p-quest-detail__time-measure-wrap">
                     <form action="" method="post">
-                        <button id="js-stopwatchStart" type="submit" name="start"><img src="./img/icon/play.png" alt="再生ボタン" width="40px" height="40px"></button>
+                        <button id="js-stopwatchStart" type="button" name="start"><img src="./img/icon/play.png" alt="再生ボタン" width="40px" height="40px"></button>
                         <button id="js-stopwatchStop" type="submit" name="stop"><img src="./img/icon/stop.png" alt="停止ボタン" width="40px" height="40px"></button>
+                        <div class="p-quest-detail__time-measure-result">
+                            <time id="js-stopwatch" date-time="00:00:00">00:00:00</time>
+                        </div>
+                        <input id="id-hidden" type="hidden" name="questId">
+                        <input id="time-hidden" type="hidden" name="studyTime">
                     </form>
-                    <div class="p-quest-detail__time-measure-result">
-                        <time id="js-stopwatch" date-time="00:00:00">00:00:00</time>
-                    </div>
                 </div>
                 <div class="p-quest-detail__time-measure-text">
                     <h3><?=$teqName[0]?></h3>
                     <p><?=$questInfo[$teqName[0]][$queName[0]]?></p>
                 </div>
             </div>
-            <button class="c-button">戻る</button>
+            <div class="c-button-link"><a href="./quest-list.php">戻る</a></div>
         </div>
     </div>
 </div>
+
+<?php // ダミーのQUESTIDです ?>
+<?php $getQuestId = '0101' ?>
+<script>
+    let questId = <?php echo json_encode($getQuestId); ?>;
+
+    const startButton = document.getElementById("js-stopwatchStart");
+    const stopButton = document.getElementById("js-stopwatchStop");
+    const idHidden = document.getElementById("id-hidden");
+    const timeHidden = document.getElementById("time-hidden");
+    startButton.addEventListener('click', () => {
+        // 現在の日付と時間を取得
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = ('0' + (now.getMonth() + 1)).slice(-2);
+        const day = ('0' + now.getDate()).slice(-2);
+        const hours = ('0' + now.getHours()).slice(-2);
+        const minutes = ('0' + now.getMinutes()).slice(-2);
+        const seconds = ('0' + now.getSeconds()).slice(-2);
+
+        const startTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        const japanTime = now.toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" });
+
+
+        idHidden.value = questId;
+        timeHidden.value = startTime;
+    });
+
+</script>
 
 <?php require_once("./footer.php"); ?>

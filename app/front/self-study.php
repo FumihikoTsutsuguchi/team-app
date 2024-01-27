@@ -38,34 +38,19 @@
         </div>
         <div class="p-self-study-list">
             <ul>
-                <li>
-                    <div>
-                        <img src="./img/icon/study-dummy.png" alt="">
-                    </div>
-                    <p>PHP 本格入門</p>
-                    <button type="submit" class="c-button">START</button>
-                </li>
-                <li>
-                    <div>
-                        <img src="./img/icon/study-dummy.png" alt="">
-                    </div>
-                    <p>もう怖くない Git!</p>
-                    <button type="submit" class="c-button">START</button>
-                </li>
-                <li>
-                    <div>
-                        <img src="./img/icon/study-dummy.png" alt="">
-                    </div>
-                    <p>おうちで学べるデータベースの基本</p>
-                    <button type="submit" class="c-button">START</button>
-                </li>
-                <li>
-                    <div>
-                        <img src="./img/icon/study-dummy.png" alt="">
-                    </div>
-                    <p>学習教材なし<br>で登録</p>
-                    <button type="submit" class="c-button">START</button>
-                </li>
+                <?php
+                    for ($i = 0; $i < count($referencesTitle); $i++) {
+                        echo <<<EOT
+                            <li>
+                                <div>
+                                <img src="./img/icon/study-dummy.png" alt="">
+                                </div>
+                                <p>{$referencesTitle[$i]}</p>
+                                <button type="submit" class="c-button">START</button>
+                            </li>
+                        EOT;
+                    }
+                ?>
             </ul>
         </div>
 
@@ -105,5 +90,4 @@
         </div>
     </div>
 </div>
-
 <?php require_once("./footer.php"); ?>
