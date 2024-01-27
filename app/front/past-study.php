@@ -1,4 +1,7 @@
-<?php require_once("./header.php"); ?>
+<?php
+    require_once("./header.php");
+    $records = selectRecords(3);
+?>
 
 <div class="c-wrapper">
     <div class="c-nav-breadcrumb">
@@ -23,35 +26,37 @@
         </div>
         <div class="past-study__list">
             <ul>
-                <li>
-                    <p>2024 / 01 / 01 (月)</p>
-                    <button>
-                        <img src="./img/icon/study-dummy.png" alt="">
-                        <div class="past-study__list-content">
-                            <p>PHP 本格入門</p>
-                            <time date-time="">01:40:00</time>
-                        </div>
-                    </button>
-                </li>
-                <li>
-                    <p>2024 / 01 / 02 (月)</p>
-                    <button>
-                        <div class="past-study__list-content">
-                            <p><span>PHP</span>QUEST i  PHPについて初心者に説明ができる</p>
-                            <time date-time="">10:40:00</time>
-                        </div>
-                    </button>
-                </li>
-                <li>
-                    <p>2024 / 01 / 04 (水)</p>
-                    <button>
-                        <img src="./img/icon/study-dummy.png" alt="">
-                        <div class="past-study__list-content">
-                            <p>おうちで学べるデータベースの基本</p>
-                            <time date-time="">02:40:00</time>
-                        </div>
-                    </button>
-                </li>
+                <!-- 学習記録表示処理 START -->
+                <?php
+                $i = 0;
+                for($i = 0; $i < count($records); $i++)
+                {
+                    echo <<<EOT
+                        <li>
+                            <p>{$records[$i]['date']}</p>
+                            <button>
+                                <img src="./img/icon/study-dummy.png" alt="">
+                                <div class="past-study__list-content">
+                    EOT;
+                    if ($records[$i]['questNo'] !== '0') {
+                        echo <<<EOT
+                            <p>{$records[$i]['questType']}{$records[$i]['questNo']}.{$records[$i]['questTitle']}</p>
+                        EOT;
+                    } elseif ($records[$i]['questNo'] === '0') {
+                        echo <<<EOT
+                            <p>使った教材：{$records[$i]['referenceTitle']}</p>
+                        EOT;
+                    }
+                    echo <<<EOT
+                                    <p></p>
+                                    <p>カテゴリ：{$records[$i]['category']}</p>
+                                    <time date-time="">{$records[$i]['learning_time']}</time>
+                                </div>
+                            </button>
+                        </li>
+                    EOT;
+                }?>
+                                <!-- 学習記録表示処理 END -->
             </ul>
         </div>
     </div>

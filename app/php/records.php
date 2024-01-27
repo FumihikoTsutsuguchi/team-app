@@ -69,6 +69,8 @@ function selectRecords(int $recordsType)
                 ref.reference_title AS referenceTitle,
                 que.quest_no AS questNo,
                 que.quest_title AS questTitle,
+                quecat.category_name AS questType,
+                rec.started_at AS date,
                 TIME_FORMAT(TIMEDIFF(finished_at, started_at), '%H:%i:%s') AS learning_time
             FROM
                 records AS rec
@@ -78,6 +80,8 @@ function selectRecords(int $recordsType)
                 ON rec.reference_id = ref.reference_id
                 INNER JOIN teq_categorys AS teq
                 ON ref.teq_category_id = teq.category_id
+                INNER JOIN quest_categorys AS quecat
+                ON que.quest_category_id = quecat.category_id
             ORDER BY
                 DATE_FORMAT(rec.started_at, '%YYYY年%mm月%dd日') DESC
             LIMIT 25
