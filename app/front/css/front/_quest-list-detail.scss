@@ -22,7 +22,7 @@
 
 .p-quest-detail__time {
     margin-top: 80px;
-    & .c-button {
+    & .c-button-link {
         margin-top: 30px;
         margin-left: auto;
     }
@@ -37,15 +37,17 @@
 }
 
 .p-quest-detail__time-measure-wrap {
-    display: flex;
-    align-items: center;
-    > button {
-        & + button {
-            margin-left: 10px;
-        }
-        &.disabled {
-            -webkit-filter: grayscale(1); /* Webkit */
-            filter: grayscale(1); /* W3C */
+    form {
+        display: flex;
+        align-items: center;
+        > button {
+            & + button {
+                margin-left: 10px;
+            }
+            &.disabled {
+                -webkit-filter: grayscale(1); /* Webkit */
+                filter: grayscale(1); /* W3C */
+            }
         }
     }
 }
