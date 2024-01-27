@@ -1,6 +1,7 @@
 <?php require_once("./header.php"); ?>
 
 <?php $phpQuestList = getQuestList(4);?>
+<?php $dbQuestList = getQuestList(6);?>
 
 <div class="c-wrapper">
     <div class="c-nav-breadcrumb">
