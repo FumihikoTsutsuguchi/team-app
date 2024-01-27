@@ -69,7 +69,7 @@ function selectRecords(int $recordsType)
             WHERE
                 rec.reference_id <> 1
             EOT;
-        } elseif ($recordsType === 3) {
+        } elseif ($recordsType === 2) {
             $query = <<<EOT
             SELECT
                 teq.category_name AS category,
