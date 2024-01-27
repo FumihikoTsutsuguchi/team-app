@@ -53,6 +53,7 @@ function selectRecords(int $recordsType)
                     ON que.teq_category_id = teq.category_id
                 WHERE
                     rec.quest_id <> 1
+                    AND DATE_FORMAT(rec.started_at, '%Y-%m-%d') = CURDATE()
             EOT;
         } elseif ($recordsType === 1) {
             $query = <<<EOT
