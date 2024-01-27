@@ -2,7 +2,7 @@
 
 <?php list($playerLevel, $playerExp, $avatar_path, $avatar_name, $requireExp) = getPlayersInfo();?>
 <?php list($learningTimes, $weeklyLearningTime, $totalLearningTime) = getPlaytime();?>
-
+<?php insertReports() ?>
 <main id="top">
     <div class="p-front__mv">
         <div class="p-front__mv-content">

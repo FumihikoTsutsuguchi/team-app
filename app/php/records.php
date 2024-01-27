@@ -26,17 +26,71 @@ function insertRecords()
         // 処理なし
     }
 }
-
-function selectRecords()
+//教材、QUEST、過去の学習一覧で学習記録の内容を取得
+function selectRecords(int $recordsType)
 {
     $pdo = dbConnect();
-
     try {
-        $query = file_get_contents('select.sql');
+        if ($recordsType === 0) {
+            $query = <<<EOT
+                SELECT
+                    teq.category_name AS category,
+                    que.quest_no AS num,
+                    que.quest_title AS title,
+                    TIME_FORMAT(TIMEDIFF(finished_at, started_at), '%H:%i:%s') AS learning_time
+                FROM
+                    records AS rec
+                    INNER JOIN quests AS que
+                    ON rec.quest_id = que.quest_id
+                    INNER JOIN teq_categorys AS teq
+                    ON que.teq_category_id = teq.category_id
+                WHERE
+                    rec.quest_id <> 1
+            EOT;
+        } elseif ($recordsType === 1) {
+            $query = <<<EOT
+            SELECT
+                teq.category_name AS category,
+                ref.reference_title AS title,
+                TIME_FORMAT(TIMEDIFF(finished_at, started_at), '%H:%i:%s') AS learning_time
+            FROM
+                records AS rec
+                INNER JOIN lerning_references AS ref
+                ON rec.reference_id = ref.reference_id
+                INNER JOIN teq_categorys AS teq
+                ON ref.teq_category_id = teq.category_id
+            WHERE
+                rec.reference_id <> 1
+            EOT;
+        } elseif ($recordsType === 3) {
+            $query = <<<EOT
+            SELECT
+                teq.category_name AS category,
+                ref.reference_title AS referenceTitle,
+                que.quest_no AS questNo,
+                que.quest_title AS questTitle,
+                TIME_FORMAT(TIMEDIFF(finished_at, started_at), '%H:%i:%s') AS learning_time
+            FROM
+                records AS rec
+                INNER JOIN quests AS que
+                ON rec.quest_id = que.quest_id
+                INNER JOIN lerning_references AS ref
+                ON rec.reference_id = ref.reference_id
+                INNER JOIN teq_categorys AS teq
+                ON ref.teq_category_id = teq.category_id
+            ORDER BY
+                DATE_FORMAT(rec.started_at, '%YYYY年%mm月%dd日') DESC
+            LIMIT 25
+            EOT;
+        }
+
         $statement = $pdo->prepare($query);
         $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        // foreach ($results as $result)
 
-        return true;
+        $category = $results;
+        return $category;
     } catch (PDOException $e) {
         echo "取得失敗";
         return false;
