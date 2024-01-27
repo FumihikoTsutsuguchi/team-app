@@ -3,13 +3,19 @@
 function insertReports()
 {
     $pdo = dbConnect();
-
     try {
-        $query = 'file_get_contents() ~.sqlパスで指定';
+        //トップページを読み込んだ時にその日の日報がなければ日報を作成する
+        $query = <<<EOT
+        INSERT IGNORE INTO
+            reports (
+                reported_date
+            )
+        VALUES (
+            CURDATE()
+        )
+        EOT;
         $statement = $pdo->prepare($query);
-        // $statement->bindValue(***); クエリ内に条件がある場合は必要
         $statement->execute();
-
         return true;
     } catch (PDOException $e) {
         echo "取得失敗";
