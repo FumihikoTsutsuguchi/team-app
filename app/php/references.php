@@ -1,21 +1,23 @@
 <?php
 
-function insertReferences()
+function insertReferences(string $title, int $teqCategoryId)
 {
     $pdo = dbConnect();
 
     try {
-        /**
-        * クエリ内容一例 :
-        * INSERT INTO records(started_at, finished_at, quest_id, reference_id)
-        *        VALUES(:started_at, CURRENT_TIMESTAMP, :quest_id, :reference_id);
-        */
-        $query = file_get_contents('insert.sql');
+        $query = <<<EOT
+            INSERT INTO lerning_references (
+                reference_title,
+                teq_category_id
+            )
+            VALUES (
+                :reference_title,
+                :teq_category_id
+            )
+        EOT;
         $statement = $pdo->prepare($query);
-        //date : 2000-07-01T00:00:00+00:00
-        $statement->bindValue(':started_at', date(DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000)), PDO::PARAM_STR);
-        $statement->bindValue(':quest_id', 1, PDO::PARAM_INT);
-        $statement->bindValue(':reference_id', 1, PDO::PARAM_INT);
+        $statement->bindValue(':reference_title', $title, PDO::PARAM_STR);
+        $statement->bindValue(':teq_category_id', $teqCategoryId, PDO::PARAM_INT);
         $statement->execute();
 
         return true;
