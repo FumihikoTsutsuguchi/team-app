@@ -232,22 +232,29 @@ function judgePlayerLevelUp($requireExp)
 
     try {
         //最新のレコードを取得
-        $query = 'SELECT TIMEDIFF(finished_at, started_at) AS timediff FROM records ORDER BY finished_at DESC LIMIT 1';
+        $query = <<<EOT
+        SELECT
+              TIME_FORMAT(TIMEDIFF(finished_at, started_at), "%H:%i:%s") AS timediff
+        FROM
+            records ORDER BY finished_at DESC LIMIT 1
+        EOT;
         $statement = $pdo->prepare($query);
         $statement->execute();
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
-        //時間(h)にフォーマット
-        $timeDiff = date('H', strtotime($result['timediff']));
-        $changeTimeToInt = intval($timeDiff);
+        //時間を分にフォーマット
+        $timeArray = explode(":", $result['timediff']);
+        $hour = $timeArray[0] * 60; //時間→分
+        $second = round($timeArray[2] / 60, 2); //秒→分　少数第2を丸めてる
+        $minutes = $hour + $timeArray[1] + $second;
 
-        //経過時間＞必要経験値となるか
-        if ($changeTimeToInt >= $requireExp) {
-            $addExp = $changeTimeToInt - $requireExp;
-            playerLevelUp($addExp);
+        //経過時間 > 必要経験値となるか
+        if ($minutes >= $requireExp) {
+            $addExp = $minutes - $requireExp;
+            playerLevelUp($addExp, $pdo);
             $result = true;
         } else {
-            addPlayerCurrentExp($changeTimeToInt);
+            addPlayerCurrentExp($minutes, $pdo);
             $result = false;
         }
 
