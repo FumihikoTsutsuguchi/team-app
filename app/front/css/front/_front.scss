@@ -1,5 +1,10 @@
 @use "../global" as *;
 
+.p-front__wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
 // MVセクション
 .p-front__mv {
     position: relative;
@@ -46,7 +51,7 @@
 
 // 学習状況セクション
 .p-front__study {
-    margin-top: 120px;
+    margin-top: 100px;
 }
 
 .p-front__study-content {
@@ -91,7 +96,8 @@
     border: 1px solid $border;
     border-radius: 10px;
     padding: 50px 50px;
-    width: 60%;
+    width: 100%;
+    max-width: 360px;
 }
 
 .p-front__avatar-content-avatar {

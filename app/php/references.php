@@ -1,9 +1,9 @@
 <?php
 
-function insertReferences(string $title, int $teqCategoryId)
+function insertReferences(string $title, $teqCategoryId)
 {
     $pdo = dbConnect();
-
+    $teqCategoryId = 1;
     try {
         $query = <<<EOT
             INSERT INTO lerning_references (
@@ -40,6 +40,8 @@ function getLearningReferencesTitle()
                 *
             FROM
                 lerning_references
+            ORDER BY
+                reference_id DESC
         EOT;
         $statement = $pdo->prepare($query);
         $statement->execute();
