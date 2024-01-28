@@ -18,7 +18,7 @@
         <h2 class="c-heading">QUEST 一覧</h2>
         <div class="p-quest-list__select">
             <h3>QUEST</h3>
-            <form action="./quest-list-detail.php" method="post">
+            <form action="./quest-list-detail.php" method="get">
                 <?php
                     foreach ($questLists as $questList) {
                         foreach ($questList as $teqCategory => $questTypes) {
@@ -35,7 +35,7 @@
                                   EOT;
                                   foreach ($quests as $quest) {
                                       echo <<<EOT
-                                          <li><button>{$quest}</button></li>
+                                          <li><button name="quest_id" value="{$quest['id']}">{$quest['title']}</button></li>
                                       EOT;
                                   }
                                   echo <<<EOT
