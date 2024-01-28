@@ -54,16 +54,38 @@ function selectReports($date)
     }
 }
 
-function renewReports()
+function setTotalPlaytime()
 {
     $pdo = dbConnect();
 
     try {
-        $query = file_get_contents('selsct.sql');
+        $query = <<<EOT
+            SELECT
+                SEC_TO_TIME(SUM(time_to_sec(TIMEDIFF(finished_at, started_at)))) AS learning_time
+            FROM
+                records
+            WHERE
+                DATE_FORMAT(started_at, '%Y-%m-%d') = CURDATE()
+        EOT;
         $statement = $pdo->prepare($query);
         $statement->execute();
+        $todaysLearningTime = $statement->fetch(PDO::FETCH_ASSOC);
 
-        return true;
+        var_dump($todaysLearningTime);
+
+        $query = <<<EOT
+        UPDATE
+          reports
+        SET
+            learning_per_day = :todaysLearningTime
+        WHERE
+           reported_date = CURDATE()
+        EOT;
+        $statement = $pdo->prepare($query);
+        $statement->bindValue(':todaysLearningTime', $todaysLearningTime['learning_time'], PDO::PARAM_STR);
+        $statement->execute();
+
+
     } catch (PDOException $e) {
         echo "更新失敗";
         return false;

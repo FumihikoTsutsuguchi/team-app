@@ -48,4 +48,35 @@
     </div>
 </div>
 
+<?php // ダミーの教材ID ?>
+<?php $getId = '1111' ?>
+
+<script>
+    // スタートボタンクリック時に教材IDとスタート時間をformに渡す処理
+
+    const Id = <?php echo json_encode($getId); ?>; // 教材のID
+    const startButton = document.getElementById("js-stopwatchStart");
+    const stopButton = document.getElementById("js-stopwatchStop");
+    const idHidden = document.getElementById("id-hidden");
+    const timeHidden = document.getElementById("time-hidden");
+    startButton.addEventListener('click', () => {
+        // 現在の日付と時間を取得
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = ('0' + (now.getMonth() + 1)).slice(-2);
+        const day = ('0' + now.getDate()).slice(-2);
+        const hours = ('0' + now.getHours()).slice(-2);
+        const minutes = ('0' + now.getMinutes()).slice(-2);
+        const seconds = ('0' + now.getSeconds()).slice(-2);
+
+        const startTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        const japanTime = now.toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" });
+
+
+        idHidden.value = Id; // 教材のIDを<formのinput type=hidden>のvalueに渡す
+        timeHidden.value = startTime; // 学習開始日時を<formのinput type=hidden>に渡す
+    });
+
+</script>
+
 <?php require_once("./footer.php"); ?>

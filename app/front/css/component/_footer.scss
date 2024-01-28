@@ -1,5 +1,14 @@
 @use "../global" as *;
 
 .c-footer {
+    margin-top: 80px;
+    background-color: #f0f6da;
+}
 
+.c-footer__content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    text-align: right;
 }
