@@ -25,8 +25,8 @@ function dbConnect(): PDO
 //取得した文字列型の数字をローマ数字に変換
 function changeNumToRome($value)
 {
-    $beforeStr = array("1", "2", "3", "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15");
-    $afterStr = array("i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix","x", "xi", "xii", "xiii", "xiv", "xv");
+    $beforeStr = array("10", "11", "12", "13", "14", "15", "16", "17","18", "19", "20", "21", "22", "23", "24", "25", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+    $afterStr = array("x", "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii","xviii", "xix", "xx", "xxi", "xxii", "xxiii", "xxiv", "xxv", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix");
 
     $replaceStr = str_replace($beforeStr, $afterStr, $value);
 

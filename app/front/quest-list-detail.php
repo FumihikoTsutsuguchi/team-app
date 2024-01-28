@@ -69,8 +69,6 @@ if (array_key_exists('start', $_POST)) {
     </div>
 </div>
 
-<?php // ダミーのQUESTIDです ?>
-<?php $getQuestId = '0101' ?>
 <script>
     let questId = <?php echo json_encode($getQuestId); ?>;
 
