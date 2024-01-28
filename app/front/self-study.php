@@ -1,7 +1,7 @@
 <?php require_once("./header.php"); ?>
 
 <?php
-    $referencesTitle = getLearningReferencesTitle();
+    list($referencesId, $referencesTitle) = getLearningReferencesTitle();
     $records = selectRecords(1);
 
     if ($_POST !== []) {
@@ -46,7 +46,7 @@
             </form>
         </div>
         <div class="p-self-study-list">
-            <form action="./self-study-detail.php" method="post">
+            <form action="./self-study-detail.php" method="get">
                 <ul id="materialList">
                     <?php
                         for ($i = 0; $i < count($referencesTitle); $i++) {
@@ -56,7 +56,7 @@
                                     <img src="./img/icon/study-dummy.png" alt="">
                                     </div>
                                     <p>{$referencesTitle[$i]}</p>
-                                    <button type="submit" class="c-button">START</button>
+                                    <button name="reference_id" value="{$referencesId[$i]}" type="submit" class="c-button">START</button>
                                 </li>
                             EOT;
                         }
