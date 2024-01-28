@@ -24,7 +24,6 @@
                     <li><a href="./quest-list.php">QUEST一覧</a></li>
                     <li><a href="./self-study.php">学習記録一覧</a></li>
                     <li><a href="./past-study.php">過去の学習一覧</a></li>
-                    <li><a href="./daily-report.php">日報</a></li>
                     <li><a href="./avatar.php">アバター</a></li>
                 </ul>
             </nav>

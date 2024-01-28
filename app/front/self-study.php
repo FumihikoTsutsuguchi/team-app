@@ -20,31 +20,6 @@
     <div class="p-self-study">
         <div class="c-heading-wrap">
             <h2 class="c-heading">新しい教材を登録</h2>
-            <button id="modalOpen" type="button"><img src="./img/icon/plus.png" alt="プラスのアイコン"></button>
-            <form method="post" action="">
-                <div id="easyModal" class="c-modal">
-                    <?php
-                    /* [TODO]
-                        教材名・画像パスをモーダル内で取得して、下記の教材ごとのリスト(.p-self-study-list)に動的に表示
-                    */
-                    ?>
-                    <div class="c-modal-content">
-                        <div class="c-modal-header">
-                            <h1>教材を登録することができます</h1>
-                            <span class="c-modalClose c-modal-cross">×</span>
-                        </div>
-                        <div class="c-modal-body">
-                            <label class="c-modal-body__book" for="materialName">教材名</label>
-                            <input type="text" name="materialName" id="materialName" >
-                            <label class="c-modal-body__book" for="teqCategory">カテゴリ名</label>
-                            <input type="text" name="teqCategory" id="teqCategory">
-                            <label class="c-modal-body__img" class="c-modal-body__book" for="materialImage">教材画像</label>
-                            <input type="file" name="materialImage" id="materialImage">
-                            <button type="submit" id="materialSaveButton" class="c-modal-button c-button__small c-modalClose" >登録する</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
         </div>
         <div class="p-self-study-list">
             <form action="./self-study-detail.php" method="post">
@@ -64,6 +39,32 @@
                     ?>
                 </ul>
             </form>
+            <div class="p-self-study-list-add">
+                <p>新規登録</p>
+                <button id="modalOpen" type="button"><img src="./img/icon/plus.png" alt="プラスのアイコン"></button>
+                <form method="post" action="">
+                    <div id="easyModal" class="c-modal">
+                        <?php
+                        /* [TODO]
+                            教材名・画像パスをモーダル内で取得して、下記の教材ごとのリスト(.p-self-study-list)に動的に表示
+                        */
+                        ?>
+                        <div class="c-modal-content">
+                            <div class="c-modal-header">
+                                <h1>教材を登録することができます</h1>
+                                <span class="c-modalClose c-modal-cross">×</span>
+                            </div>
+                            <div class="c-modal-body">
+                                <label class="c-modal-body__book" for="materialName">教材名</label>
+                                <input type="text" name="materialName" id="materialName" >
+                                <label class="c-modal-body__book" for="teqCategory">カテゴリ名</label>
+                                <input type="text" name="teqCategory" id="teqCategory">
+                                <button type="submit" id="materialSaveButton" class="c-modal-button c-button__small c-modalClose" >登録する</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="c-archive">

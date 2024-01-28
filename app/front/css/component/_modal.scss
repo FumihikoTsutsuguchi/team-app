@@ -40,7 +40,8 @@
     font-size: 2.7rem;
 }
 .c-modal-body {
-    padding: 20px;
+    text-align: left;
+    padding: 30px;
     color: $black;
     input {
         background-color: $gray-bg;
@@ -53,6 +54,7 @@
     }
     .c-button__small {
         margin-top: 20px;
+        margin-left: auto;
     }
 }
 

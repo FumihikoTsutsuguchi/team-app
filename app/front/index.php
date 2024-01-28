@@ -17,60 +17,62 @@
         </div>
     </div>
     <div class="c-wrapper">
-        <div class="p-front__study">
-            <h2 class="c-heading">現在の学習状況</h2>
-            <div class="p-front__study-content">
-                <p>学習時間 (QUEST・学習記録)</p>
-                <div class="p-front__study-content-total">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>今日</th>
-                                <th>今週</th>
-                                <th>統計</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><?php echo $learningTimes[0]['learning_time']; ?></td>
-                                <td><?php echo $weeklyLearningTime; ?></td>
-                                <td><?php echo $totalLearningTime; ?></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="p-front__study-content-bar-graph">
-                    <canvas id="myChart"></canvas>
+        <div class="p-front__wrap">
+            <div class="p-front__study">
+                <h2 class="c-heading">現在の学習状況</h2>
+                <div class="p-front__study-content">
+                    <p>学習時間 (QUEST・学習記録)</p>
+                    <div class="p-front__study-content-total">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>今日</th>
+                                    <th>今週</th>
+                                    <th>統計</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><?php echo $learningTimes[0]['learning_time']; ?></td>
+                                    <td><?php echo $weeklyLearningTime; ?></td>
+                                    <td><?php echo $totalLearningTime; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-front__study-content-bar-graph">
+                        <canvas id="myChart"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="p-front__avatar">
-            <h2 class="c-heading">アバターの様子</h2>
-            <div class="p-front__avatar-content">
-                <div class="p-front__avatar-content-avatar">
-                    <div class="p-front__avatar-content-img">
-                        <img src="<?php echo $avatar_path; ?>" alt="">
+            <div class="p-front__avatar">
+                <h2 class="c-heading">アバターの様子</h2>
+                <div class="p-front__avatar-content">
+                    <div class="p-front__avatar-content-avatar">
+                        <div class="p-front__avatar-content-img">
+                            <img src="<?php echo $avatar_path; ?>" alt="">
+                        </div>
+                        <p><?php echo $avatar_name; ?></p>
                     </div>
-                    <p><?php echo $avatar_name; ?></p>
-                </div>
-                <div class="p-front__avatar-content-level">
-                    <p>プレイヤーの現在のLv</p>
-                    <div><span>Lv:</span><?php echo $playerLevel; ?></div>
-                </div>
-                <div class="p-front__avatar-content-status">
-                    <p>EXP (分)</p>
-                    <div class="p-front__avatar-content-status-number">
-                        <progress max="1" value="<?php echo $playerExp; ?>"></progress>
-                        <p>
-                            <span>0</span><span>60</span>
-                        </p>
-                        <div class="p-front__avatar-content-status-limit">
-                            <p>次のレベルまで<span><?php echo $requireExp; ?></span>分</p>
+                    <div class="p-front__avatar-content-level">
+                        <p>プレイヤーの現在のLv</p>
+                        <div><span>Lv:</span><?php echo $playerLevel; ?></div>
+                    </div>
+                    <div class="p-front__avatar-content-status">
+                        <p>EXP (分)</p>
+                        <div class="p-front__avatar-content-status-number">
+                            <progress max="1" value="<?php echo $playerExp; ?>"></progress>
+                            <p>
+                                <span>0</span><span>60</span>
+                            </p>
+                            <div class="p-front__avatar-content-status-limit">
+                                <p>次のレベルまで<span><?php echo $requireExp; ?></span>分</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="c-button-link">
-                    <a href="./avatar.php">アバター 一覧</a>
+                    <div class="c-button-link">
+                        <a href="./avatar.php">アバター 一覧</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,8 +130,6 @@ foreach ($learningTimes as $record) {
     $data[] = $totalHours;
 }
 
-// 配列を逆順にする
-$labels = array_reverse($labels);
 
 ?>
 
