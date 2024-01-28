@@ -37,7 +37,6 @@ function startRecordsForQuest($startedTime, $getId, $page)
 
         //トランザクションをコミット
         $pdo->commit();
-        return $recordedTime;
     } catch (PDOException $e) {
         $pdo->rollback();
         echo "de-ta登録失敗";
