@@ -1,9 +1,13 @@
 @use "../global" as *;
 
 .c-archive {
+    > P {
+        margin-bottom: 20px;
+    }
     ul {
         display: flex;
         gap: 30px;
+        overflow-x: scroll;
         li {
             max-width: 130px;
         }

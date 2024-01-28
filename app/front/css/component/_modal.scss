@@ -32,10 +32,12 @@
     }
 }
 .c-modalClose {
-    font-size: 2.7rem;
     &:hover {
         cursor: pointer;
     }
+}
+.c-modal-cross {
+    font-size: 2.7rem;
 }
 .c-modal-body {
     padding: 20px;
@@ -45,8 +47,12 @@
         border: 1px solid $gray;
         border-radius: 3px;
     }
-    > p {
+    > label {
+        display: block;
         margin-bottom: 5px;
+    }
+    .c-button__small {
+        margin-top: 20px;
     }
 }
 
