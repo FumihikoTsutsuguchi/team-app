@@ -1,6 +1,6 @@
 <?php
 
-function startRecordsForQuest($getId)
+function startRecordsForQuest($startedTime, $getId, $page)
 {
     $pdo = dbConnect();
 
@@ -8,18 +8,31 @@ function startRecordsForQuest($getId)
     $pdo->beginTransaction();
 
     try {
-        //現在の時刻を取得
-        $query = 'SELECT NOW() AS startTime';
-        $statement = $pdo->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-        $recordedTime = $result['startTime'];
-
         //計測開始したクエストIDで記録を作成
-        $query = 'INSERT INTO records(started_at, quest_id, reference_id) VALUES(:started_at, :quest_id, 1)';
+        $query = <<<EOT
+            INSERT INTO
+                records (
+                    started_at,
+                    finished_at,
+                    quest_id,
+                    reference_id
+                ) VALUES (
+                    :started_at,
+                    :finished_at,
+                    :quest_id,
+                    :reference_id
+                )
+        EOT;
         $statement = $pdo->prepare($query);
-        $statement->bindValue(':started_at', $recordedTime, PDO::PARAM_STR);
-        $statement->bindValue(':quest_id', $getId, PDO::PARAM_INT);
+        $statement->bindValue(':started_at', $startedTime, PDO::PARAM_STR);
+        $statement->bindValue(':finished_at', $startedTime, PDO::PARAM_STR);
+        if ($page === 0) {
+            $statement->bindValue(':reference_id', 1, PDO::PARAM_INT);
+            $statement->bindValue(':quest_id', $getId, PDO::PARAM_INT);
+        } elseif ($page === 1) {
+            $statement->bindValue(':reference_id', $getId, PDO::PARAM_INT);
+            $statement->bindValue(':quest_id', 1, PDO::PARAM_INT);
+        }
         $statement->execute();
 
         //トランザクションをコミット
@@ -27,7 +40,7 @@ function startRecordsForQuest($getId)
         return $recordedTime;
     } catch (PDOException $e) {
         $pdo->rollback();
-        echo "登録失敗";
+        echo "de-ta登録失敗";
     } finally {
         // 処理なし
     }
@@ -112,22 +125,21 @@ function selectRecords(int $recordsType)
     }
 }
 
-function finishedRecordsForQuest($getId, $startedTime)
+function finishedRecordsForQuest()
 {
     $pdo = dbConnect();
 
     try {
         $query = <<<EOT
         UPDATE
-              records
+            records
         SET
-              finished_at=NOW()
+            finished_at = DEFAULT
         WHERE
-             quest_id = :quest_id AND reference_id = 1 AND started_at = :started_at
+            started_at = finished_at;
         EOT;
         $statement = $pdo->prepare($query);
-        $statement->bindValue(':quest_id', $getId, PDO::PARAM_INT);
-        $statement->bindValue(':started_at', $startedTime, PDO::PARAM_STR);
+
         $statement->execute();
     } catch (PDOException $e) {
         echo "更新失敗";

@@ -11,10 +11,9 @@ $teqName = array_keys($questInfo);
 $queName = array_keys($questInfo[$teqName[0]]);
 
 //当ページのPOSTリクエストより、学習記録を作成
-if (array_key_exists('start', $_POST)) {
-    $startTime = startRecordsForQuest($getQuestId);
-} elseif (array_key_exists('stop', $_POST)) {
-    finishedRecordsForQuest($getId, $startedTime);
+if (array_key_exists('stop', $_POST)) {
+    startRecordsForQuest($_POST['studyTime'], $getQuestId, 0);
+    finishedRecordsForQuest();
 }
 ?>
 
@@ -57,6 +56,7 @@ if (array_key_exists('start', $_POST)) {
                         </div>
                         <input id="id-hidden" type="hidden" name="questId">
                         <input id="time-hidden" type="hidden" name="studyTime">
+                        <input id="page-hidden" type="hidden" name="pageDefineNo">
                     </form>
                 </div>
                 <div class="p-quest-detail__time-measure-text">
@@ -71,11 +71,11 @@ if (array_key_exists('start', $_POST)) {
 
 <script>
     let questId = <?php echo json_encode($getQuestId); ?>;
-
     const startButton = document.getElementById("js-stopwatchStart");
     const stopButton = document.getElementById("js-stopwatchStop");
     const idHidden = document.getElementById("id-hidden");
     const timeHidden = document.getElementById("time-hidden");
+    const pageHidden = document.getElementById("page-hidden");
     startButton.addEventListener('click', () => {
         // 現在の日付と時間を取得
         const now = new Date();
@@ -95,5 +95,4 @@ if (array_key_exists('start', $_POST)) {
     });
 
 </script>
-
 <?php require_once("./footer.php"); ?>
