@@ -1,12 +1,13 @@
 <?php require_once("./header.php"); ?>
 
 <?php
-    $referencesTitle = getLearningReferencesTitle();
-    $records = selectRecords(1);
-
     if ($_POST !== []) {
         insertReferences($_POST['materialName'], $_POST['teqCategory']);
     }
+    $referencesTitle = getLearningReferencesTitle();
+    $records = selectRecords(1);
+
+
  ?>
 
 <div class="c-wrapper">
