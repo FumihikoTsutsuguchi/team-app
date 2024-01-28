@@ -68,35 +68,35 @@ function getCurrentAvatarId()
     }
 }
 
-function playerLevelUp($addExp)
+function playerLevelUp($addExp, $pdo)
 {
-    //db接続はしない
+    //db接続はしない(引数から取得)
 
     try {
-        //設定アバターid取得
-        $query = 'UPDATE players SET current_level = current_level + 1, current_exp = :getExp WHERE id = 1;';
+        //レベルと現在の経験値を加算して更新
+        $query = 'UPDATE players SET current_level = current_level + 1, current_exp = :getExp WHERE player_id = 1';
         $statement = $pdo->prepare($query);
         $statement->bindValue(':getExp', $addExp, PDO::PARAM_INT);
         $statement->execute();
     } catch (PDOException $e) {
-        echo "取得失敗";
+        echo "更新失敗";
     } finally {
             // 処理なし
     }
 }
 
-function addPlayerCurrentExp($addExp)
+function addPlayerCurrentExp($addExp, $pdo)
 {
-    //db接続はしない
+    //db接続はしない(引数から取得)
 
     try {
-        //設定アバターid取得
-        $query = 'UPDATE players SET current_exp = current_exp + :getExp WHERE id = 1;';
+        //取得経験値を加算
+        $query = 'UPDATE players SET current_exp = current_exp + :getExp WHERE player_id = 1';
         $statement = $pdo->prepare($query);
         $statement->bindValue(':getExp', $addExp, PDO::PARAM_INT);
         $statement->execute();
     } catch (PDOException $e) {
-        echo "取得失敗";
+        echo "更新失敗";
     } finally {
             // 処理なし
     }
