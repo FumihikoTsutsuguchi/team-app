@@ -222,3 +222,43 @@ function getPlaytime()
             // 処理なし
     }
 }
+
+function judgePlayerLevelUp($requireExp)
+{
+    $pdo = dbConnect();
+
+    //トランザクション開始
+    $pdo->beginTransaction();
+
+    try {
+        //最新のレコードを取得
+        $query = 'SELECT TIMEDIFF(finished_at, started_at) AS timediff FROM records ORDER BY finished_at DESC LIMIT 1';
+        $statement = $pdo->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        //時間(h)にフォーマット
+        $timeDiff = date('H', strtotime($result['timediff']));
+        $changeTimeToInt = intval($timeDiff);
+
+        //経過時間＞必要経験値となるか
+        if ($changeTimeToInt >= $requireExp) {
+            $addExp = $changeTimeToInt - $requireExp;
+            playerLevelUp($addExp);
+            $result = true;
+        } else {
+            addPlayerCurrentExp($changeTimeToInt);
+            $result = false;
+        }
+
+        //トランザクションをコミット
+        $pdo->commit();
+        return $result;
+    } catch (PDOException $e) {
+        $pdo->rollback();
+        echo "取得失敗";
+        return false;
+    } finally {
+            // 処理なし
+    }
+}

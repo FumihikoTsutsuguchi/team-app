@@ -67,3 +67,37 @@ function getCurrentAvatarId()
             // 処理なし
     }
 }
+
+function playerLevelUp($addExp)
+{
+    //db接続はしない
+
+    try {
+        //設定アバターid取得
+        $query = 'UPDATE players SET current_level = current_level + 1, current_exp = :getExp WHERE id = 1;';
+        $statement = $pdo->prepare($query);
+        $statement->bindValue(':getExp', $addExp, PDO::PARAM_INT);
+        $statement->execute();
+    } catch (PDOException $e) {
+        echo "取得失敗";
+    } finally {
+            // 処理なし
+    }
+}
+
+function addPlayerCurrentExp($addExp)
+{
+    //db接続はしない
+
+    try {
+        //設定アバターid取得
+        $query = 'UPDATE players SET current_exp = current_exp + :getExp WHERE id = 1;';
+        $statement = $pdo->prepare($query);
+        $statement->bindValue(':getExp', $addExp, PDO::PARAM_INT);
+        $statement->execute();
+    } catch (PDOException $e) {
+        echo "取得失敗";
+    } finally {
+            // 処理なし
+    }
+}
