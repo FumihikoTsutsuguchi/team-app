@@ -1,8 +1,10 @@
 <?php require_once("./header.php"); ?>
 
-<?php list($playerLevel, $playerExp, $avatar_path, $avatar_name, $requireExp) = getPlayersInfo();?>
-<?php list($learningTimes, $weeklyLearningTime, $totalLearningTime) = getPlaytime();?>
 <?php insertReports() ?>
+<?php setTotalPlaytime(); ?>
+<?php list($learningTimes, $weeklyLearningTime, $totalLearningTime) = getPlaytime();?>
+<?php list($playerLevel, $playerExp, $avatar_path, $avatar_name, $requireExp) = getPlayersInfo();?>
+
 <main id="top">
     <div class="p-front__mv">
         <div class="p-front__mv-content">

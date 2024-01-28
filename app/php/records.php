@@ -198,11 +198,12 @@ function getPlaytime()
         //直近１週間の合計勉強時間を表示
         $query = <<<EOT
         SELECT
-            TIME_FORMAT(SUM(TIMEDIFF(finished_at, started_at)), '%H:%i:%s') AS learning_time
+            SEC_TO_TIME(SUM(time_to_sec(learning_per_day))) AS learning_time
         FROM
-            records
+            reports
         WHERE
-            started_at BETWEEN  (CURDATE() - INTERVAL 7 DAY) AND (CURDATE() + INTERVAL 1 DAY)
+            reported_date BETWEEN  (CURDATE() - INTERVAL 7 DAY) AND (CURDATE() + INTERVAL 1 DAY)
+        LIMIT 7
         EOT;
         $statement = $pdo->prepare($query);
         $statement->execute();
@@ -212,9 +213,9 @@ function getPlaytime()
         //全学習時間を取得
         $query = <<<EOT
         SELECT
-            TIME_FORMAT(SUM(TIMEDIFF(finished_at, started_at)), '%H:%i:%s') AS learning_time
+            SEC_TO_TIME(SUM(time_to_sec(learning_per_day))) AS learning_time
         FROM
-            records
+            reports
         EOT;
         $statement = $pdo->prepare($query);
         $statement->execute();
