@@ -68,7 +68,7 @@ if (calendarEl) {
 const modal = document.getElementById("easyModal");
 if (modal) {
     const buttonOpen = document.getElementById("modalOpen");
-    const buttonClose = document.getElementsByClassName("c-modalClose")[0];
+    const buttonCloses = document.querySelectorAll(".c-modalClose");
 
     // ボタンがクリックされた時
     const modalOpen = () => {
@@ -80,7 +80,10 @@ if (modal) {
     const modalClose = () => {
         modal.style.display = "none";
     }
-    buttonClose.addEventListener("click", modalClose);
+
+    buttonCloses.forEach((buttonClose) => {
+        buttonClose.addEventListener("click", modalClose);
+    });
 
     // モーダルコンテンツ以外がクリックされた時
     const outsideClose = (e) => {
@@ -90,3 +93,37 @@ if (modal) {
     }
     addEventListener("click", outsideClose);
 }
+
+// 学習記録一覧ページにてモーダルで教材を登録する挙動
+    const materialSaveButton = document.getElementById("materialSaveButton"); // 登録ボタン
+
+    if (materialSaveButton) {
+        const materialNameInput = document.getElementById("materialName"); // 教材名input
+        const materialImageInput = document.getElementById("materialImage"); // 教材イメージinput
+        const materialList = document.getElementById("materialList"); // 教材一覧
+
+        const registerMaterial = () => { // 教材一覧に情報を出力する関数
+            const materialName = materialNameInput.value;
+            const materialImage = materialImageInput.value;
+
+            if (materialName && materialImage) {
+                // 教材リストに追加
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    <div>
+                        <img src="./img/icon/study-dummy.png" alt="">
+                    </div>
+                    <p>${materialName}</p>
+                    <button type="submit" class="c-button">START</button>
+                `;
+                materialList.appendChild(listItem);
+
+                // フォームをリセット
+                materialNameInput.value = "";
+                materialImageInput.value = "";
+            } else {
+                alert("教材名と画像を入力してください。");
+            }
+        }
+        materialSaveButton.addEventListener("click", registerMaterial);
+    }

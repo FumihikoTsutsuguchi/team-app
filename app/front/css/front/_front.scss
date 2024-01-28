@@ -26,6 +26,17 @@
 .p-front__mv-content-img {
     aspect-ratio: 50/40;
     max-width: 50px;
+    animation-name: hachi;
+    animation: hachi .5s ease-in-out infinite alternate;
+}
+@keyframes hachi {
+    0% {
+        transform: translate(0,0px);
+    }
+
+    100% {
+        transform: translate(0,-14px)
+    }
 }
 
 .p-front__mv-content-button {

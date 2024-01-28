@@ -25,33 +25,36 @@
                 <div class="c-modal-content">
                     <div class="c-modal-header">
                         <h1>教材を登録することができます</h1>
-                        <span class="c-modalClose">×</span>
+                        <span class="c-modalClose c-modal-cross">×</span>
                     </div>
                     <div class="c-modal-body">
-                        <p class="c-modal-body__book">教材名</p>
-                        <input type="text" name="" id="">
-                        <p class="c-modal-body__img">教材画像</p>
-                        <input type="file" name="" id="">
+                        <label class="c-modal-body__book" for="materialName">教材名</label>
+                        <input type="text" name="materialName" id="materialName">
+                        <label class="c-modal-body__img" class="c-modal-body__book" for="materialImage">教材画像</label>
+                        <input type="file" name="materialImage" id="materialImage">
+                        <button type="button" id="materialSaveButton" class="c-modal-button c-button__small c-modalClose">登録する</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="p-self-study-list">
-            <ul>
-                <?php
-                    for ($i = 0; $i < count($referencesTitle); $i++) {
-                        echo <<<EOT
-                            <li>
-                                <div>
-                                <img src="./img/icon/study-dummy.png" alt="">
-                                </div>
-                                <p>{$referencesTitle[$i]}</p>
-                                <button type="submit" class="c-button">START</button>
-                            </li>
-                        EOT;
-                    }
-                ?>
-            </ul>
+            <form action="./self-study-detail.php" method="post">
+                <ul id="materialList">
+                    <?php
+                        for ($i = 0; $i < count($referencesTitle); $i++) {
+                            echo <<<EOT
+                                <li>
+                                    <div>
+                                    <img src="./img/icon/study-dummy.png" alt="">
+                                    </div>
+                                    <p>{$referencesTitle[$i]}</p>
+                                    <button type="submit" class="c-button">START</button>
+                                </li>
+                            EOT;
+                        }
+                    ?>
+                </ul>
+            </form>
         </div>
 
         <div class="c-archive">
