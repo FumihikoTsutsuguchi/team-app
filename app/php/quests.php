@@ -10,6 +10,7 @@ function getQuestList($teq_category_id)
             SELECT
                 que.quest_no ,
                 que.quest_title,
+                que.quest_id,
                 que.if_advanced,
                 teq.category_name AS teqName,
                 que_category.category_name AS queName
@@ -42,12 +43,14 @@ function getQuestList($teq_category_id)
             $teqName = $result['teqName'];
             $queName = $result['queName'];
             $questNo = $result['quest_no'];
+            $questId = $result['quest_id'];
             $replaceStr = changeNumToRome($result['quest_no']);
             if ($result['if_advanced'] === "1") {
-                $questList[$teqName][$queName][$questNo] = "QUEST " . $replaceStr . " " . $result['quest_title'] . "(advanced)";
+                $questList[$teqName][$queName][$questNo]['title'] = "QUEST " . $replaceStr . " " . $result['quest_title'] . "(advanced)";
             } else {
-                $questList[$teqName][$queName][$questNo] = "QUEST " . $replaceStr . " " . $result['quest_title'];
+                $questList[$teqName][$queName][$questNo]['title'] = "QUEST " . $replaceStr . " " . $result['quest_title'];
             }
+            $questList[$teqName][$queName][$questNo]['id'] = $questId;
         }
 
         return $questList;
