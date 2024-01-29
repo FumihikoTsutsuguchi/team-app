@@ -4,7 +4,7 @@
     if ($_POST !== []) {
         insertReferences($_POST['materialName'], $_POST['teqCategory']);
     }
-    $referencesTitle = getLearningReferencesTitle();
+    list($referencesId, $referencesTitle) = getLearningReferencesTitle();
     $records = selectRecords(1);
 
 
@@ -22,7 +22,7 @@
             <h2 class="c-heading">新しい教材を登録</h2>
         </div>
         <div class="p-self-study-list">
-            <form action="./self-study-detail.php" method="post">
+            <form action="./self-study-detail.php" method="get">
                 <ul id="materialList">
                     <?php
                         for ($i = 0; $i < count($referencesTitle); $i++) {
@@ -32,7 +32,7 @@
                                     <img src="./img/icon/study-dummy.png" alt="">
                                     </div>
                                     <p>{$referencesTitle[$i]}</p>
-                                    <button type="submit" class="c-button">START</button>
+                                    <button name="reference_id" value="{$referencesId[$i]}" type="submit" class="c-button">START</button>
                                 </li>
                             EOT;
                         }

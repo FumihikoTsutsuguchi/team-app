@@ -1,4 +1,28 @@
 <?php require_once("./header.php"); ?>
+<?php
+// レベルアップしたかどうか
+$levelUpStatus = false;
+
+//プレイヤーの情報を取得
+list($playerLevel, $playerExp, $avatar_path, $avatar_name, $requireExp) = getPlayersInfo();
+
+//GETリクエストからリファレンスIDを取得
+$getReferenceId = $_GET['reference_id'];
+
+//リファレンスIDからリファレンス詳細情報を取得
+$ReferenceInfo = getReferenceListDetail($getReferenceId);
+
+//連想配列名からカテゴリー名("PHP", "SkillDok"など)を取得
+// $teqName = array_keys($ReferenceInfo);
+// $queName = array_keys($ReferenceInfo[$teqName[0]]);
+
+//当ページのPOSTリクエストより、学習記録を作成
+// if (array_key_exists('stop', $_POST)) {
+//     startRecordsForQuest($_POST['studyTime'], $getQuestId, 1);
+//     finishedRecordsForQuest();
+//     $levelUpStatus = judgePlayerLevelUp($requireExp);
+// }
+?>
 
 <div class="c-wrapper">
     <div class="c-nav-breadcrumb">
@@ -17,7 +41,7 @@
             */
             ?>
             <div class="p-quest-detail__content-text">
-                <h3>PHP 本格入門</h3>
+                <h3><?php echo $ReferenceInfo;?></h3>
             </div>
         </div>
         <div class="p-quest-detail__time">
@@ -35,6 +59,13 @@
                         <div class="p-quest-detail__time-measure-result">
                             <time id="js-stopwatch" date-time="00:00:00">00:00:00</time>
                         </div>
+                        <?php
+                        // if ($levelUpStatus == true) {
+                        //     echo <<<EOT
+                        //         <p class="level-up-status">LevelUp!</p>
+                        //     EOT;
+                        // }
+                        ?>
                         <input id="id-hidden" type="hidden" name="questId">
                         <input id="time-hidden" type="hidden" name="studyTime">
                     </form>
